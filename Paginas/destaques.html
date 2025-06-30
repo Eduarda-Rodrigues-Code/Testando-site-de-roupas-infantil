@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destaques</title>
+    <link rel="stylesheet" href="destaque.css">
+    <style>
+      *{
+  padding: 0%;
+  margin: 0%;
+}
+  body{
+    background-color: #FFF4E8;
+}
+
+.verao {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.verao-titulo {
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    gap: 20px;
+
+}
+
+.bolinhas {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.bolinhas span {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.bolinhas span:hover{
+    width: 32px;
+  height: 32px;
+  transition: 0.5s;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+
+.verao-titulo h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  color: #111;
+}
+
+.verao-galeria {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.verao-card {
+  position: relative;
+  width: 900px;
+  height: 900px;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+}
+
+.verao-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.verao-label {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  padding: 12px 30px;
+  border-radius: 30px;
+}
+.verao-label:hover {
+color:#EDB5B5; 
+}
+
+.queridinhos {
+  margin: 100px;
+  padding: 40px 20px;
+  text-align: left;
+}
+
+.queridinhos h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: #111;
+}
+
+.carousel-wrapper {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 10px;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.produto {
+  /* background-color: white; */
+  padding: 20px;
+  /* border-radius: 16px; */
+  width: 250px;
+  flex-shrink: 0;
+  position: relative;
+  /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.05); */
+}
+
+.produto img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.selo {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-weight: bold;
+  background: none;
+  color: black;
+}
+
+.cores {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.cores span {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid #ccc;
+}
+
+h3 {
+  font-family: 'DM Serif Display', serif;
+  margin: 8px 0 4px;
+}
+
+.botoes {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.comprar {
+  background-color: #72D94C;
+  border: none;
+  color: white;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.carrinho {
+  background-color: #f6c9cc;
+  border: none;
+  color: #ffffff;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-esq,
+.btn-dir {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  background-color: #f6c9cc;
+  border: none;
+  padding: 12px 18px;
+  font-size: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+  font-weight: bold;
+}
+
+.btn-esq {
+  left: 0;
+}
+
+.btn-dir {
+  right: 0;
+}
+
+
+    </style>
+</head>
+<body>
+      <div id="Header-container"></div>
+      <br><br><br>
+    <section class="verao">
+  <div class="verao-titulo">
+    <div class="bolinhas">
+      <span style="background-color: #fbd048;"></span>
+      <span style="background-color: #f590cf;"></span>
+      <span style="background-color: #7d80da;"></span>
+      <span style="background-color: #6dc0f6;"></span>
+    </div>
+    <h2>NOVA COLEÇÃO: VERÃO PRAIANO</h2>
+  </div>
+
+  <div class="verao-galeria">
+    <a href="..." class="verao-card">
+      <img src="img/MENINAS VERAO.jpg" alt="Meninas">
+      <div class="verao-label">MENINAS</div>
+    </a>
+
+    <a href="..." class="verao-card">
+      <img src="img/MENINOS VERAO.jpg" alt="Meninos">
+      <div class="verao-label">MENINOS</div>
+    </a>
+  </div>
+</section>
+
+<section class="queridinhos">
+  <h2>QUERIDINHOS DO MOMENTO - MODA BABY</h2>
+  <div class="carousel-wrapper">
+    <button class="btn-esq" onclick="scrollCarousel(this, -1)">‹</button>
+    <div class="carousel" data-carousel>
+
+      <div class="produto">
+        <span class="selo">New</span>
+        <img src="img/BEBE VESTIDO.webp" alt="Conjunto de Linho">
+        <div class="cores">
+          <span style="background-color: #e9e3d7;"></span>
+          <span style="background-color: #c9a98c;"></span>
+        </div>
+        <h3>Conjunto De Linho</h3>
+        <p>R$ 160,00</p>
+        <div class="botoes">
+          <button class="comprar">Comprar</button>
+          <button class="carrinho">Carrinho</button>
+        </div>
+      </div>
+
+      <div class="produto">
+        <span class="selo">New</span>
+        <img src="img/BEBE VESTIDO.webp" alt="Blusa de Tricot">
+        <div class="cores">
+          <span style="background-color: #ff1cd9;"></span>
+          <span style="background-color: #f3f706;"></span>
+        </div>
+        <h3>Blusa de Tricot</h3>
+        <p>R$ 120,00</p>
+        <div class="botoes">
+          <button class="comprar">Comprar</button>
+          <button class="carrinho">Carrinho</button>
+        </div>
+      </div>
+<div class="produto">
+        <span class="selo">New</span>
+        <img src="img/BEBE VESTIDO.webp" alt="Conjunto de Linho">
+        <div class="cores">
+          <span style="background-color: #e9e3d7;"></span>
+          <span style="background-color: #c9a98c;"></span>
+        </div>
+        <h3>Conjunto De Linho</h3>
+        <p>R$ 160,00</p>
+        <div class="botoes">
+          <button class="comprar">Comprar</button>
+          <button class="carrinho">Carrinho</button>
+        </div>
+      </div>
+
+      <div class="produto">
+        <span class="selo">New</span>
+        <img src="img/BEBE VESTIDO.webp" alt="Blusa de Tricot">
+        <div class="cores">
+          <span style="background-color: #fcb900;"></span>
+          <span style="background-color: #e799f6;"></span>
+        </div>
+        <h3>Blusa de Tricot</h3>
+        <p>R$ 120,00</p>
+        <div class="botoes">
+          <button class="comprar">Comprar</button>
+          <button class="carrinho">Carrinho</button>
+        </div>
+      </div>
+<div class="produto">
+        <span class="selo">New</span>
+        <img src="img/BEBE VESTIDO.webp" alt="Conjunto de Linho">
+        <div class="cores">
+          <span style="background-color: #e9e3d7;"></span>
+          <span style="background-color: #c9a98c;"></span>
+        </div>
+        <h3>Conjunto De Linho</h3>
+        <p>R$ 160,00</p>
+        <div class="botoes">
+          <button class="comprar">Comprar</button>
+          <button class="carrinho">Carrinho</button>
+        </div>
+      </div>
+
+      <div class="produto">
+        <span class="selo">New</span>
+        <img src="img/BEBE VESTIDO.webp" alt="Blusa de Tricot">
+        <div class="cores">
+          <span style="background-color: #fcb900;"></span>
+          <span style="background-color: #e799f6;"></span>
+        </div>
+        <h3>Blusa de Tricot</h3>
+        <p>R$ 120,00</p>
+        <div class="botoes">
+          <button class="comprar">Comprar</button>
+          <button class="carrinho">Carrinho</button>
+        </div>
+      </div>
+<div class="produto">
+        <span class="selo">New</span>
+        <img src="img/BEBE VESTIDO.webp" alt="Conjunto de Linho">
+        <div class="cores">
+          <span style="background-color: #e9e3d7;"></span>
+          <span style="background-color: #c9a98c;"></span>
+        </div>
+        <h3>Conjunto De Linho</h3>
+        <p>R$ 160,00</p>
+        <div class="botoes">
+          <button class="comprar">Comprar</button>
+          <button class="carrinho">Carrinho</button>
+        </div>
+      </div>
+
+      <div class="produto">
+        <span class="selo">New</span>
+        <img src="..." alt="Blusa de Tricot">
+        <div class="cores">
+          <span style="background-color: #fcb900;"></span>
+          <span style="background-color: #e799f6;"></span>
+        </div>
+        <h3>Blusa de Tricot</h3>
+        <p>R$ 120,00</p>
+        <div class="botoes">
+          <button class="comprar">Comprar</button>
+          <button class="carrinho">Carrinho</button>
+        </div>
+      </div>
+<div class="produto">
+        <span class="selo">New</span>
+        <img src="..." alt="Conjunto de Linho">
+        <div class="cores">
+          <span style="background-color: #e9e3d7;"></span>
+          <span style="background-color: #c9a98c;"></span>
+        </div>
+        <h3>Conjunto De Linho</h3>
+        <p>R$ 160,00</p>
+        <div class="botoes">
+          <button class="comprar">Comprar</button>
+          <button class="carrinho">Carrinho</button>
+        </div>
+      </div>
+
+      
+
+    </div>
+
+      <button class="btn-dir" onclick="scrollCarousel(this, 1)">›</button>
+  </div>
+</section>
+
+
+<section class="queridinhos">
+  <h2>QUERIDINHOS DO MOMENTO - MODA MENINOS</h2>
+  <div class="carousel-wrapper">
+    <button class="btn-esq" onclick="scrollCarousel(this, -1)">‹</button>
+    <div class="carousel" data-carousel>
+     
+      <div class="produto">
+        <span class="selo">New</span>
+        <img src="img/BEBE BLUSA.webp" alt="Conjunto de Linho">
+        <div class="cores">
+          <span style="background-color: #e9e3d7;"></span>
+          <span style="background-color: #c9a98c;"></span>
+        </div>
+        <h3>Conjunto De Linho</h3>
+        <p>R$ 160,00</p>
+        <div class="botoes">
+          <button class="comprar">Comprar</button>
+          <button class="carrinho">Carrinho</button>
+        </div>
+      </div>
+
+      <div class="produto">
+        <span class="selo">New</span>
+        <img src="img/BEBE BLUSA.webp" alt="Blusa de Tricot">
+        <div class="cores">
+          <span style="background-color: #fcb900;"></span>
+          <span style="background-color: #e799f6;"></span>
+        </div>
+        <h3>Blusa de Tricot</h3>
+        <p>R$ 120,00</p>
+        <div class="botoes">
+          <button class="comprar">Comprar</button>
+          <button class="carrinho">Carrinho</button>
+        </div>
+      </div>
+<div class="produto">
+        <span class="selo">New</span>
+        <img src="img/BEBE BLUSA.webp" alt="Conjunto de Linho">
+        <div class="cores">
+          <span style="background-color: #e9e3d7;"></span>
+          <span style="background-color: #c9a98c;"></span>
+        </div>
+        <h3>Conjunto De Linho</h3>
+        <p>R$ 160,00</p>
+        <div class="botoes">
+          <button class="comprar">Comprar</button>
+          <button class="carrinho">Carrinho</button>
+        </div>
+      </div>
+
+      <div class="produto">
+        <span class="selo">New</span>
+        <img src="img/BEBE BLUSA.webp" alt="Blusa de Tricot">
+        <div class="cores">
+          <span style="background-color: #fcb900;"></span>
+          <span style="background-color: #e799f6;"></span>
+        </div>
+        <h3>Blusa de Tricot</h3>
+        <p>R$ 120,00</p>
+        <div class="botoes">
+          <button class="comprar">Comprar</button>
+          <button class="carrinho">Carrinho</button>
+        </div>
+      </div>
+<div class="produto">
+        <span class="selo">New</span>
+        <img src="img/BEBE BLUSA.webp" alt="Conjunto de Linho">
+        <div class="cores">
+          <span style="background-color: #e9e3d7;"></span>
+          <span style="background-color: #c9a98c;"></span>
+        </div>
+        <h3>Conjunto De Linho</h3>
+        <p>R$ 160,00</p>
+        <div class="botoes">
+          <button class="comprar">Comprar</button>
+          <button class="carrinho">Carrinho</button>
+        </div>
+      </div>
+
+      <div class="produto">
+        <span class="selo">New</span>
+        <img src="img/BEBE BLUSA.webp" alt="Blusa de Tricot">
+        <div class="cores">
+          <span style="background-color: #fcb900;"></span>
+          <span style="background-color: #e799f6;"></span>
+        </div>
+        <h3>Blusa de Tricot</h3>
+        <p>R$ 120,00</p>
+        <div class="botoes">
+          <button class="comprar">Comprar</button>
+          <button class="carrinho">Carrinho</button>
+        </div>
+      </div>
+<div class="produto">
+        <span class="selo">New</span>
+        <img src="img/BEBE BLUSA.webp" alt="Conjunto de Linho">
+        <div class="cores">
+          <span style="background-color: #e9e3d7;"></span>
+          <span style="background-color: #c9a98c;"></span>
+        </div>
+        <h3>Conjunto De Linho</h3>
+        <p>R$ 160,00</p>
+        <div class="botoes">
+          <button class="comprar">Comprar</button>
+          <button class="carrinho">Carrinho</button>
+        </div>
+      </div>
+
+      <div class="produto">
+        <span class="selo">New</span>
+        <img src="img/BEBE BLUSA.webp" alt="Blusa de Tricot">
+        <div class="cores">
+          <span style="background-color: #fcb900;"></span>
+          <span style="background-color: #e799f6;"></span>
+        </div>
+        <h3>Blusa de Tricot</h3>
+        <p>R$ 120,00</p>
+        <div class="botoes">
+          <button class="comprar">Comprar</button>
+          <button class="carrinho">Carrinho</button>
+        </div>
+      </div>
+<div class="produto">
+        <span class="selo">New</span>
+        <img src="..." alt="Conjunto de Linho">
+        <div class="cores">
+          <span style="background-color: #e9e3d7;"></span>
+          <span style="background-color: #c9a98c;"></span>
+        </div>
+        <h3>Conjunto De Linho</h3>
+        <p>R$ 160,00</p>
+        <div class="botoes">
+          <button class="comprar">Comprar</button>
+          <button class="carrinho">Carrinho</button>
+        </div>
+      </div>
+
+  
+    </div>
+    <button class="btn-dir" onclick="scrollCarousel(this, 1)">›</button>
+  </div>
+</section>
+
+
+<script>
+  fetch('Header.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('Header-container').innerHTML = data;
+    });
+
+
+
+  function scrollCarousel(button, direction) {
+    const wrapper = button.closest('.carousel-wrapper');
+    const carousel = wrapper.querySelector('[data-carousel]');
+    const scrollAmount = 270;
+
+    carousel.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+
+
+</script>
+</body>
+</html>
