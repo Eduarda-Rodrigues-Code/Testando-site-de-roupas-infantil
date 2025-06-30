@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="meninos.js"></script>
   <title>Roupas de Meninas</title>
   <style>
     body {
@@ -314,200 +313,24 @@
       <button class="comprar-modal">Comprar agora</button>
     </div>
   </div>
-<img src="img/baby/1.png" alt="">
 
+<script src="produtosMENINAS.js"></script>
+<script>
+  fetch('Header.html')
+    .then(response => response.text())
+    .then(data => document.getElementById('header-container').innerHTML = data);
 
-  <script>
-    fetch('Header.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('header-container').innerHTML = data;
-      });
-
-    fetch('ESTAÇÕES.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('ESTAÇÕES-container').innerHTML = data;
-      });
-
-   const produtos = [
-    {
-      id: 1,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/portifólioFem/BlusaTricôFem.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#d8c4aa", "#00793c", "#c57000"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-     {
-      id: 2,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/portifólioFem/CasacoLinhaFem.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#d8c4aa", "#00793c", "#c57000"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-     {
-      id: 3,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/portifólioFem/CasacoPeluciadoFem.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#d8c4aa", "#00793c", "#c57000"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-     {
-      id: 4,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/portifólioFem/ChoppedeShortFem.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#d8c4aa", "#00793c", "#c57000"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-      {
-      id: 5,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/portifólioFem/ConjuntinhoVerãoFem.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#d8c4aa", "#00793c", "#c57000"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-     {
-      id: 6,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/portifólioFem/ConjuntoFloralVerde.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#d8c4aa", "#00793c", "#c57000"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-     {
-      id: 7,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/portifólioFem/CroppedCoraçãoFem.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#d8c4aa", "#00793c", "#c57000"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-     {
-      id: 8,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/portifólioFem/VestidoFem.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#d8c4aa", "#00793c", "#c57000"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },   {
-      id: 9,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/portifólioFem/PijamaFlorido.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#d8c4aa", "#00793c", "#c57000"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-     {
-      id: 10,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/portifólioFem/ConjuntoRegataeShortRosa.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#d8c4aa", "#00793c", "#c57000"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-     {
-      id: 11,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/portifólioFem/ConjuntoBlusaShortFem.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#d8c4aa", "#00793c", "#c57000"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-     {
-      id: 12,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/portifólioFem/ChoppedeShortFem.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#d8c4aa", "#00793c", "#c57000"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    }
-  ];
+  fetch('ESTAÇÕES.html')
+    .then(response => response.text())
+    .then(data => document.getElementById('ESTAÇÕES-container').innerHTML = data);
 
   const container = document.getElementById("produtos");
+  const produtosMenina = produtos.filter(p => p.categoria === "menina");
 
-  produtos.forEach(produto => {
+  produtosMenina.forEach(produto => {
     const card = document.createElement("div");
     card.classList.add("card");
-
     const coresHtml = produto.cores.map(cor => `<span style="background-color: ${cor}; display:inline-block; width:12px; height:12px; border-radius:50%;"></span>`).join("");
-
     card.innerHTML = `
       <span class="tag">New</span>
       <img src="${produto.imagens[0]}" alt="${produto.nome}">
@@ -521,7 +344,6 @@
         </div>
       </div>
     `;
-
     container.appendChild(card);
   });
 
@@ -535,31 +357,32 @@
     document.getElementById("modalNome").textContent = produto.nome;
     document.getElementById("modalPreco").textContent = produto.preco;
     document.getElementById("modalDescricao").textContent = produto.descricao;
-const tamanhosContainer = document.getElementById("modalTamanhos");
-tamanhosContainer.innerHTML = "";
-produto.tamanhos.forEach(tamanho => {
-  const btn = document.createElement("button");
-  btn.textContent = tamanho;
-  btn.className = "btn-tamanho";
-  btn.onclick = () => {
-    document.querySelectorAll(".btn-tamanho").forEach(b => b.classList.remove("selecionado"));
-    btn.classList.add("selecionado");
-  };
-  tamanhosContainer.appendChild(btn);
-});
-  const coresContainer = document.getElementById("modalCores");
-coresContainer.innerHTML = "";
 
-produto.cores.forEach(cor => {
-  const span = document.createElement("span");
-  span.className = "cor-bolinha";
-  span.style.backgroundColor = cor;
-  span.onclick = () => {
-    document.querySelectorAll(".cor-bolinha").forEach(b => b.classList.remove("selecionado"));
-    span.classList.add("selecionado");
-  };
-  coresContainer.appendChild(span);
-});
+    const tamanhosContainer = document.getElementById("modalTamanhos");
+    tamanhosContainer.innerHTML = "";
+    produto.tamanhos.forEach(tamanho => {
+      const btn = document.createElement("button");
+      btn.textContent = tamanho;
+      btn.className = "btn-tamanho";
+      btn.onclick = () => {
+        document.querySelectorAll(".btn-tamanho").forEach(b => b.classList.remove("selecionado"));
+        btn.classList.add("selecionado");
+      };
+      tamanhosContainer.appendChild(btn);
+    });
+
+    const coresContainer = document.getElementById("modalCores");
+    coresContainer.innerHTML = "";
+    produto.cores.forEach(cor => {
+      const span = document.createElement("span");
+      span.className = "cor-bolinha";
+      span.style.backgroundColor = cor;
+      span.onclick = () => {
+        document.querySelectorAll(".cor-bolinha").forEach(b => b.classList.remove("selecionado"));
+        span.classList.add("selecionado");
+      };
+      coresContainer.appendChild(span);
+    });
 
     document.getElementById("modalBg").style.display = "flex";
   }
@@ -574,6 +397,6 @@ produto.cores.forEach(cor => {
     if (imagemAtual >= imagensProduto.length) imagemAtual = 0;
     document.getElementById("modalImagem").src = imagensProduto[imagemAtual];
   }
-  </script>
+</script>
 </body>
 </html>

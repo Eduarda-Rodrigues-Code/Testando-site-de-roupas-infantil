@@ -314,265 +314,89 @@
       <button class="comprar-modal">Comprar agora</button>
     </div>
   </div>
-
-<img src="img/baby/11.png" alt="">
+<script src="produtosBEBE.js"></script>
   <script>
     fetch('Header.html')
       .then(response => response.text())
-      .then(data => {
-        document.getElementById('header-container').innerHTML = data;
-      });
-
+      .then(data => document.getElementById('header-container').innerHTML = data);
+  
     fetch('ESTAÇÕES.html')
       .then(response => response.text())
-      .then(data => {
-        document.getElementById('ESTAÇÕES-container').innerHTML = data;
-      });
-
-   const produtos = [
-    {
-      id: 1,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/baby/1.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#f072a7;", "#0f0f0f", "#ffffff"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-     {
-      id: 2,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/baby/2.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#f5f2D0", "#f072a7", "#1e1685"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-     {
-      id: 3,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/baby/3.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#f5f2D0", "#0f0f0f"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-     {
-      id: 4,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/baby/4.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#f3c839;", "#0f0f0f;"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-      {
-      id: 5,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/baby/5.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#1e1685", "#f02e2e", "#f3c839"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-     {
-      id: 6,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/baby/6.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#f072a7", "#f5f2D0"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-     {
-      id: 7,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/baby/7.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#1e1685", "#f072a7"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-     {
-      id: 8,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/baby/8.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#f02e2e", "#f5f2D0"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },   {
-      id: 9,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/baby/9.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#2a640b", "#f5f2D0"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-     {
-      id: 10,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/baby/10.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#f072a7", "#f5f2D0", "#777777"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-     {
-      id: 11,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/baby/11.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#f5f2D0;", "#f072a7"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    },
-     {
-      id: 12,
-      nome: "Conjunto De Linho",
-      preco: "R$ 160,00",
-      imagens: [
-        "img/baby/13.png",
-        "img/INDEX/card1.png",
-        "img/INDEX/card2.png"
-      ],
-      cores: ["#f5f2D0"],
-      material: "Linho 100%",
-      tamanhos: ["P", "M", "G"],
-      descricao: "Conjunto elegante e leve para dias quentes."
-    }
-  ];
-
-  const container = document.getElementById("produtos");
-
-  produtos.forEach(produto => {
-    const card = document.createElement("div");
-    card.classList.add("card");
-
-    const coresHtml = produto.cores.map(cor => `<span style="background-color: ${cor}; display:inline-block; width:12px; height:12px; border-radius:50%;"></span>`).join("");
-
-    card.innerHTML = `
-      <span class="tag">New</span>
-      <img src="${produto.imagens[0]}" alt="${produto.nome}">
-      <div class="info">
-        <div class="cores">${coresHtml}</div>
-        <h3>${produto.nome}</h3>
-        <p>${produto.preco}</p>
-        <div class="botoes">
-          <button class="comprar" onclick='abrirModal(${JSON.stringify(produto)})'>Comprar</button>
-          <button class="carrinho">Carrinho</button>
+      .then(data => document.getElementById('ESTAÇÕES-container').innerHTML = data);
+  
+    const container = document.getElementById("produtos");
+    const produtosBebe = produtos.filter(p => p.categoria === "bebe");
+  
+    produtosBebe.forEach(produto => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+      const coresHtml = produto.cores.map(cor => `<span style="background-color: ${cor}; display:inline-block; width:12px; height:12px; border-radius:50%;"></span>`).join("");
+      card.innerHTML = `
+        <span class="tag">New</span>
+        <img src="${produto.imagens[0]}" alt="${produto.nome}">
+        <div class="info">
+          <div class="cores">${coresHtml}</div>
+          <h3>${produto.nome}</h3>
+          <p>${produto.preco}</p>
+          <div class="botoes">
+            <button class="comprar" onclick='abrirModal(${JSON.stringify(produto)})'>Comprar</button>
+            <button class="carrinho">Carrinho</button>
+          </div>
         </div>
-      </div>
-    `;
-
-    container.appendChild(card);
-  });
-
-  let imagemAtual = 0;
-  let imagensProduto = [];
-
-  function abrirModal(produto) {
-    imagensProduto = produto.imagens;
-    imagemAtual = 0;
-    document.getElementById("modalImagem").src = imagensProduto[imagemAtual];
-    document.getElementById("modalNome").textContent = produto.nome;
-    document.getElementById("modalPreco").textContent = produto.preco;
-    document.getElementById("modalDescricao").textContent = produto.descricao;
-const tamanhosContainer = document.getElementById("modalTamanhos");
-tamanhosContainer.innerHTML = "";
-produto.tamanhos.forEach(tamanho => {
-  const btn = document.createElement("button");
-  btn.textContent = tamanho;
-  btn.className = "btn-tamanho";
-  btn.onclick = () => {
-    document.querySelectorAll(".btn-tamanho").forEach(b => b.classList.remove("selecionado"));
-    btn.classList.add("selecionado");
-  };
-  tamanhosContainer.appendChild(btn);
-});
-  const coresContainer = document.getElementById("modalCores");
-coresContainer.innerHTML = "";
-
-produto.cores.forEach(cor => {
-  const span = document.createElement("span");
-  span.className = "cor-bolinha";
-  span.style.backgroundColor = cor;
-  span.onclick = () => {
-    document.querySelectorAll(".cor-bolinha").forEach(b => b.classList.remove("selecionado"));
-    span.classList.add("selecionado");
-  };
-  coresContainer.appendChild(span);
-});
-
-    document.getElementById("modalBg").style.display = "flex";
-  }
-
-  function fecharModal() {
-    document.getElementById("modalBg").style.display = "none";
-  }
-
-  function mudarImagem(direcao) {
-    imagemAtual += direcao;
-    if (imagemAtual < 0) imagemAtual = imagensProduto.length - 1;
-    if (imagemAtual >= imagensProduto.length) imagemAtual = 0;
-    document.getElementById("modalImagem").src = imagensProduto[imagemAtual];
-  }
+      `;
+      container.appendChild(card);
+    });
+  
+    let imagemAtual = 0;
+    let imagensProduto = [];
+  
+    function abrirModal(produto) {
+      imagensProduto = produto.imagens;
+      imagemAtual = 0;
+      document.getElementById("modalImagem").src = imagensProduto[imagemAtual];
+      document.getElementById("modalNome").textContent = produto.nome;
+      document.getElementById("modalPreco").textContent = produto.preco;
+      document.getElementById("modalDescricao").textContent = produto.descricao;
+  
+      const tamanhosContainer = document.getElementById("modalTamanhos");
+      tamanhosContainer.innerHTML = "";
+      produto.tamanhos.forEach(tamanho => {
+        const btn = document.createElement("button");
+        btn.textContent = tamanho;
+        btn.className = "btn-tamanho";
+        btn.onclick = () => {
+          document.querySelectorAll(".btn-tamanho").forEach(b => b.classList.remove("selecionado"));
+          btn.classList.add("selecionado");
+        };
+        tamanhosContainer.appendChild(btn);
+      });
+  
+      const coresContainer = document.getElementById("modalCores");
+      coresContainer.innerHTML = "";
+      produto.cores.forEach(cor => {
+        const span = document.createElement("span");
+        span.className = "cor-bolinha";
+        span.style.backgroundColor = cor;
+        span.onclick = () => {
+          document.querySelectorAll(".cor-bolinha").forEach(b => b.classList.remove("selecionado"));
+          span.classList.add("selecionado");
+        };
+        coresContainer.appendChild(span);
+      });
+  
+      document.getElementById("modalBg").style.display = "flex";
+    }
+  
+    function fecharModal() {
+      document.getElementById("modalBg").style.display = "none";
+    }
+  
+    function mudarImagem(direcao) {
+      imagemAtual += direcao;
+      if (imagemAtual < 0) imagemAtual = imagensProduto.length - 1;
+      if (imagemAtual >= imagensProduto.length) imagemAtual = 0;
+      document.getElementById("modalImagem").src = imagensProduto[imagemAtual];
+    }
   </script>
 </body>
 </html>
