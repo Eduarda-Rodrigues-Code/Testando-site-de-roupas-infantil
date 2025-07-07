@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="meninos.js"></script>
   <title>Roupas de bebe</title>
   <style>
     body {
@@ -316,87 +315,127 @@
   </div>
 <script src="produtosBEBE.js"></script>
   <script>
-    fetch('Header.html')
-      .then(response => response.text())
-      .then(data => document.getElementById('header-container').innerHTML = data);
-  
-    fetch('ESTAÇÕES.html')
-      .then(response => response.text())
-      .then(data => document.getElementById('ESTAÇÕES-container').innerHTML = data);
-  
-    const container = document.getElementById("produtos");
-    const produtosBebe = produtos.filter(p => p.categoria === "bebe");
-  
-    produtosBebe.forEach(produto => {
-      const card = document.createElement("div");
-      card.classList.add("card");
-      const coresHtml = produto.cores.map(cor => `<span style="background-color: ${cor}; display:inline-block; width:12px; height:12px; border-radius:50%;"></span>`).join("");
-      card.innerHTML = `
-        <span class="tag">New</span>
-        <img src="${produto.imagens[0]}" alt="${produto.nome}">
-        <div class="info">
-          <div class="cores">${coresHtml}</div>
-          <h3>${produto.nome}</h3>
-          <p>${produto.preco}</p>
-          <div class="botoes">
-            <button class="comprar" onclick='abrirModal(${JSON.stringify(produto)})'>Comprar</button>
-            <button class="carrinho">Carrinho</button>
-          </div>
+  fetch('Header.html')
+    .then(res => res.text())
+    .then(html => document.getElementById('header-container').innerHTML = html);
+
+  fetch('ESTAÇÕES.html')
+    .then(res => res.text())
+    .then(html => document.getElementById('ESTAÇÕES-container').innerHTML = html);
+
+  const container = document.getElementById("produtos");
+  const produtosBebe = produtos.filter(p => p.categoria === "bebe");
+
+  produtosBebe.forEach(produto => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    const coresHtml = produto.cores.map(cor =>
+      `<span style="background-color: ${cor}; display:inline-block; width:12px; height:12px; border-radius:50%; margin-right: 4px;"></span>`
+    ).join("");
+
+    card.innerHTML = `
+      <span class="tag">New</span>
+      <img src="${produto.imagens[0]}" alt="${produto.nome}" />
+      <div class="info">
+        <div class="cores">${coresHtml}</div>
+        <h3>${produto.nome}</h3>
+        <p>${produto.preco}</p>
+        <div class="botoes">
+          <button class="comprar" onclick='abrirModal(${JSON.stringify(produto)})'>Comprar</button>
         </div>
-      `;
-      container.appendChild(card);
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+
+  let imagensProduto = [];
+  let imagemAtual = 0;
+
+  function abrirModal(produto) {
+    imagensProduto = produto.imagens;
+    imagemAtual = 0;
+    document.getElementById("modalImagem").src = imagensProduto[imagemAtual];
+    document.getElementById("modalNome").textContent = produto.nome;
+    document.getElementById("modalPreco").textContent = produto.preco;
+    document.getElementById("modalDescricao").textContent = produto.descricao;
+
+    // Tamanhos
+    const tamanhosContainer = document.getElementById("modalTamanhos");
+    tamanhosContainer.innerHTML = "";
+    produto.tamanhos.forEach(tamanho => {
+      const btn = document.createElement("button");
+      btn.textContent = tamanho;
+      btn.className = "btn-tamanho";
+      btn.onclick = () => {
+        document.querySelectorAll(".btn-tamanho").forEach(b => b.classList.remove("selecionado"));
+        btn.classList.add("selecionado");
+      };
+      tamanhosContainer.appendChild(btn);
     });
-  
-    let imagemAtual = 0;
-    let imagensProduto = [];
-  
-    function abrirModal(produto) {
-      imagensProduto = produto.imagens;
-      imagemAtual = 0;
-      document.getElementById("modalImagem").src = imagensProduto[imagemAtual];
-      document.getElementById("modalNome").textContent = produto.nome;
-      document.getElementById("modalPreco").textContent = produto.preco;
-      document.getElementById("modalDescricao").textContent = produto.descricao;
-  
-      const tamanhosContainer = document.getElementById("modalTamanhos");
-      tamanhosContainer.innerHTML = "";
-      produto.tamanhos.forEach(tamanho => {
-        const btn = document.createElement("button");
-        btn.textContent = tamanho;
-        btn.className = "btn-tamanho";
-        btn.onclick = () => {
-          document.querySelectorAll(".btn-tamanho").forEach(b => b.classList.remove("selecionado"));
-          btn.classList.add("selecionado");
-        };
-        tamanhosContainer.appendChild(btn);
-      });
-  
-      const coresContainer = document.getElementById("modalCores");
-      coresContainer.innerHTML = "";
-      produto.cores.forEach(cor => {
-        const span = document.createElement("span");
-        span.className = "cor-bolinha";
-        span.style.backgroundColor = cor;
-        span.onclick = () => {
-          document.querySelectorAll(".cor-bolinha").forEach(b => b.classList.remove("selecionado"));
-          span.classList.add("selecionado");
-        };
-        coresContainer.appendChild(span);
-      });
-  
-      document.getElementById("modalBg").style.display = "flex";
+
+    // Cores
+    const coresContainer = document.getElementById("modalCores");
+    coresContainer.innerHTML = "";
+    produto.cores.forEach(cor => {
+      const span = document.createElement("span");
+      span.className = "cor-bolinha";
+      span.style.backgroundColor = cor;
+      span.onclick = () => {
+        document.querySelectorAll(".cor-bolinha").forEach(b => b.classList.remove("selecionado"));
+        span.classList.add("selecionado");
+      };
+      coresContainer.appendChild(span);
+    });
+
+    document.getElementById("modalBg").style.display = "flex";
+  }
+
+  function fecharModal() {
+    document.getElementById("modalBg").style.display = "none";
+  }
+
+  // Navegação simples das imagens do produto
+  // (botões podem ser adicionados se quiser)
+  // aqui só para manter caso queira adicionar futuramente
+  function mudarImagem(direcao) {
+    imagemAtual += direcao;
+    if (imagemAtual < 0) imagemAtual = imagensProduto.length - 1;
+    if (imagemAtual >= imagensProduto.length) imagemAtual = 0;
+    document.getElementById("modalImagem").src = imagensProduto[imagemAtual];
+  }
+
+  document.querySelector(".comprar-modal").addEventListener("click", () => {
+    const nome = document.getElementById("modalNome").textContent;
+    const preco = document.getElementById("modalPreco").textContent;
+    const descricao = document.getElementById("modalDescricao").textContent;
+    const imagem = document.getElementById("modalImagem").src;
+
+    const tamanhoSelecionado = document.querySelector(".btn-tamanho.selecionado");
+    const corSelecionada = document.querySelector(".cor-bolinha.selecionado");
+
+    if (!tamanhoSelecionado || !corSelecionada) {
+      alert("Por favor, selecione um tamanho e uma cor antes de comprar.");
+      return;
     }
-  
-    function fecharModal() {
-      document.getElementById("modalBg").style.display = "none";
-    }
-  
-    function mudarImagem(direcao) {
-      imagemAtual += direcao;
-      if (imagemAtual < 0) imagemAtual = imagensProduto.length - 1;
-      if (imagemAtual >= imagensProduto.length) imagemAtual = 0;
-      document.getElementById("modalImagem").src = imagensProduto[imagemAtual];
-    }
-  </script>
+
+    const produto = {
+      nome,
+      preco,
+      descricao,
+      imagem,
+      tamanho: tamanhoSelecionado.textContent,
+      cor: corSelecionada.style.backgroundColor
+    };
+
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+    carrinho.push(produto);
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+    alert(`${nome} adicionado ao carrinho!`);
+    fecharModal();
+  });
+</script>
 </body>
 </html>

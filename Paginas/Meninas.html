@@ -267,28 +267,10 @@
 
   </style>
 </head>
+
 <body>
   <div id="header-container"></div>
   <div id="ESTAÇÕES-container"></div>
-
-<div class="modal-bg" id="modalBg" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); backdrop-filter:blur(5px); justify-content:center; align-items:center; z-index:999;">
-  <div class="modal" style="background:white; padding:20px; border-radius:16px; max-width:600px; width:90%; position:relative;">
-    <button onclick="fecharModal()" style="position:absolute; top:10px; right:20px; background:none; border:none; font-size:18px; cursor:pointer;">✖</button>
-    <img id="modalImagem" src="" alt="" style="width:100%; max-height:300px; object-fit:contain; border-radius:10px;">
-    <div style="text-align:center; margin:10px 0;">
-      <button onclick="mudarImagem(-1)">◀</button>
-      <button onclick="mudarImagem(1)">▶</button>
-    </div>
-    <h2 id="modalNome"></h2>
-    <p id="modalPreco"></p>
-    <p id="modalDescricao"></p>
-<div id="modalTamanhos" style="margin: 10px 0; display: flex; gap: 10px; justify-content: center;"></div>
-    <div id="modalCores" style="margin-bottom:10px;"></div>
-    <button class="comprar-modal" style="display:block; margin:auto; padding:10px 20px; background:#65be11; color:#fff; border:none; border-radius:8px; font-weight:bold;">Comprar agora</button>
-  </div>
-</div>
-
-
 
   <div class="filtros">
     <h2>Filtrar por:</h2>
@@ -303,26 +285,29 @@
 
   <!-- MODAL -->
   <div class="modal-bg" id="modalBg">
-    <div class="modal" id="modalContent">
-      <button class="fechar" onclick="fecharModal()">X</button>
-      <img id="modalImagem" src="" alt="">
+    <div class="modal">
+      <button class="fechar" onclick="fecharModal()">✖</button>
+      <img id="modalImagem" src="" alt="Imagem do produto" />
       <h2 id="modalNome"></h2>
       <p id="modalPreco"></p>
       <p id="modalDescricao"></p>
+
+      <div id="modalTamanhos" style="margin: 15px 0;"></div>
       <div class="cores-modal" id="modalCores"></div>
-      <button class="comprar-modal">Comprar agora</button>
+
+      <button class="comprar-modal">Adicionar ao carrinhos</button>
     </div>
   </div>
 
 <script src="produtosMENINAS.js"></script>
 <script>
   fetch('Header.html')
-    .then(response => response.text())
-    .then(data => document.getElementById('header-container').innerHTML = data);
+    .then(res => res.text())
+    .then(html => document.getElementById('header-container').innerHTML = html);
 
   fetch('ESTAÇÕES.html')
-    .then(response => response.text())
-    .then(data => document.getElementById('ESTAÇÕES-container').innerHTML = data);
+    .then(res => res.text())
+    .then(html => document.getElementById('ESTAÇÕES-container').innerHTML = html);
 
   const container = document.getElementById("produtos");
   const produtosMenina = produtos.filter(p => p.categoria === "menina");
@@ -330,25 +315,29 @@
   produtosMenina.forEach(produto => {
     const card = document.createElement("div");
     card.classList.add("card");
-    const coresHtml = produto.cores.map(cor => `<span style="background-color: ${cor}; display:inline-block; width:12px; height:12px; border-radius:50%;"></span>`).join("");
+
+    const coresHtml = produto.cores.map(cor =>
+      `<span style="background-color: ${cor}; display:inline-block; width:12px; height:12px; border-radius:50%; margin-right: 4px;"></span>`
+    ).join("");
+
     card.innerHTML = `
       <span class="tag">New</span>
-      <img src="${produto.imagens[0]}" alt="${produto.nome}">
+      <img src="${produto.imagens[0]}" alt="${produto.nome}" />
       <div class="info">
         <div class="cores">${coresHtml}</div>
         <h3>${produto.nome}</h3>
         <p>${produto.preco}</p>
         <div class="botoes">
           <button class="comprar" onclick='abrirModal(${JSON.stringify(produto)})'>Comprar</button>
-          <button class="carrinho">Carrinho</button>
         </div>
       </div>
     `;
+
     container.appendChild(card);
   });
 
-  let imagemAtual = 0;
   let imagensProduto = [];
+  let imagemAtual = 0;
 
   function abrirModal(produto) {
     imagensProduto = produto.imagens;
@@ -358,6 +347,7 @@
     document.getElementById("modalPreco").textContent = produto.preco;
     document.getElementById("modalDescricao").textContent = produto.descricao;
 
+    // Tamanhos
     const tamanhosContainer = document.getElementById("modalTamanhos");
     tamanhosContainer.innerHTML = "";
     produto.tamanhos.forEach(tamanho => {
@@ -371,6 +361,7 @@
       tamanhosContainer.appendChild(btn);
     });
 
+    // Cores
     const coresContainer = document.getElementById("modalCores");
     coresContainer.innerHTML = "";
     produto.cores.forEach(cor => {
@@ -391,12 +382,47 @@
     document.getElementById("modalBg").style.display = "none";
   }
 
+  // Navegação simples das imagens do produto
+  // (botões podem ser adicionados se quiser)
+  // aqui só para manter caso queira adicionar futuramente
   function mudarImagem(direcao) {
     imagemAtual += direcao;
     if (imagemAtual < 0) imagemAtual = imagensProduto.length - 1;
     if (imagemAtual >= imagensProduto.length) imagemAtual = 0;
     document.getElementById("modalImagem").src = imagensProduto[imagemAtual];
   }
+
+  document.querySelector(".comprar-modal").addEventListener("click", () => {
+    const nome = document.getElementById("modalNome").textContent;
+    const preco = document.getElementById("modalPreco").textContent;
+    const descricao = document.getElementById("modalDescricao").textContent;
+    const imagem = document.getElementById("modalImagem").src;
+
+    const tamanhoSelecionado = document.querySelector(".btn-tamanho.selecionado");
+    const corSelecionada = document.querySelector(".cor-bolinha.selecionado");
+
+    if (!tamanhoSelecionado || !corSelecionada) {
+      alert("Por favor, selecione um tamanho e uma cor antes de comprar.");
+      return;
+    }
+
+    const produto = {
+      nome,
+      preco,
+      descricao,
+      imagem,
+      tamanho: tamanhoSelecionado.textContent,
+      cor: corSelecionada.style.backgroundColor
+    };
+
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+    carrinho.push(produto);
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+    alert(`${nome} adicionado ao carrinho!`);
+    fecharModal();
+  });
 </script>
 </body>
 </html>
+
