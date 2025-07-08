@@ -1,57 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Roupas de Meninas</title>
   <style>
+    /* Mantive seu CSS igualzinho para cards e modal */
     body {
-      margin: 0;
-      padding: 0;
-      background-color: #fdf3e9;
+      margin: 0; padding: 0;
+      background-color: #ffffff;
       font-family: Arial, sans-serif;
     }
 
-    .filtros {
-      position: absolute;
-      top: 180px; 
-      left: 20px;
-      width: 150px;
-      background-color: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      gap: 10px;
-    }
-
-    .filtros h2 {
-      font-size: 16px;
-      margin: 0 0 10px;
-      color: #333;
-      text-align: center;
-    }
-
-    .filtros button {
-      padding: 10px;
-      background-color: #f2f2f2;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: all 0.2s ease;
-    }
-
-    .filtros button:hover {
-      background-color: #d1d1d1;
-      transform: scale(1.02);
-    }
-
     .container {
-      margin-left: 260px; 
-      max-width: calc(100% - 280px); 
+      margin-left: 260px;
+      max-width: calc(100% - 280px);
       padding: 20px;
     }
 
@@ -77,13 +40,14 @@
       left: 6px;
       font-size: 12px;
       font-weight: bold;
+      color: #d81b60;
     }
 
     .card img {
       max-width: 100%;
       height: auto;
       border-radius: 6px;
-      max-height: 180px; 
+      max-height: 180px;
       object-fit: contain;
     }
 
@@ -105,6 +69,10 @@
       width: 12px;
       height: 12px;
       margin-bottom: 6px;
+      display: inline-block;
+      border-radius: 50%;
+      margin-right: 4px;
+      border: 1px solid #ddd;
     }
 
     .botoes {
@@ -114,34 +82,25 @@
       margin-top: 8px;
     }
 
-    .comprar,
-    .carrinho {
+    .comprar {
       font-size: 12px;
       padding: 6px 10px;
       border-radius: 8px;
-      border: #ffffff;
+      border: none;
       cursor: pointer;
-      text-decoration: none;
-    }
-
-    .carrinho {
-      background-color: #65be11;
-      color: #fff;
-    }
-
-    .comprar {
       background-color: #f072a7;
       color: #fff;
-    }
-
-    .comprar:hover, .carrinho:hover {
-      background-color: #ff2580;
-      transform: scale(1.1);
-      border-radius: 30px;
       transition: all 0.3s ease;
     }
 
-    /* MODAL */
+    .comprar:hover {
+      background-color: #ff2580;
+      transform: scale(1.1);
+      border-radius: 30px;
+    }
+
+    /* Modal */
+
     .modal-bg {
       display: none;
       position: fixed;
@@ -198,6 +157,29 @@
       border-radius: 50%;
       display: inline-block;
       border: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    .cores-modal span.selecionado {
+      border-color: #ff2580;
+      transform: scale(1.2);
+    }
+
+    .btn-tamanho {
+      padding: 8px 12px;
+      background-color: #eee;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.2s ease;
+      margin-right: 6px;
+    }
+
+    .btn-tamanho.selecionado {
+      background-color: #f072a7;
+      color: white;
+      border: 2px solid #ff2580;
     }
 
     .comprar-modal {
@@ -220,95 +202,42 @@
 
     @media (max-width: 768px) {
       .container {
-        flex-direction: column;
-      }
-
-      .filtros {
-        flex-direction: row;
-        justify-content: center;
-        margin: 0 0 20px 0;
+        margin-left: 20px;
+        max-width: calc(100% - 40px);
+        padding: 10px;
       }
 
       .produtos {
         grid-template-columns: 1fr;
       }
     }
-    .btn-tamanho {
-  padding: 8px 12px;
-  background-color: #eee;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.2s ease;
-}
-
-.btn-tamanho.selecionado {
-  background-color: #f072a7;
-  color: white;
-  border: 2px solid #ff2580;
-}
-.cor-bolinha {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  display: inline-block;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  margin-right: 8px; /* espacinho lateral */
-}
-
-.cor-bolinha.selecionado {
-  transform: scale(1.4);
-  border-color: #ff2580;
-}
-
-
   </style>
 </head>
-
 <body>
-  <div id="header-container"></div>
-  <div id="ESTAÇÕES-container"></div>
 
-  <div class="filtros">
-    <h2>Filtrar por:</h2>
-    <button>Tamanhos</button>
-    <button>Promoção</button>
-    <button>Marcas</button>
+<div class="container">
+  <main id="produtos" class="produtos"></main>
+</div>
+
+<!-- Modal -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <button class="fechar" onclick="fecharModal()">✖</button>
+    <img id="modalImagem" src="" alt="Imagem do produto" />
+    <h2 id="modalNome"></h2>
+    <p id="modalPreco"></p>
+    <p id="modalDescricao"></p>
+
+    <div id="modalTamanhos" style="margin: 15px 0;"></div>
+    <div class="cores-modal" id="modalCores"></div>
+
+    <button class="comprar-modal">Adicionar ao carrinho</button>
   </div>
-
-  <div class="container">
-    <main id="produtos" class="produtos"></main>
-  </div>
-
-  <!-- MODAL -->
-  <div class="modal-bg" id="modalBg">
-    <div class="modal">
-      <button class="fechar" onclick="fecharModal()">✖</button>
-      <img id="modalImagem" src="" alt="Imagem do produto" />
-      <h2 id="modalNome"></h2>
-      <p id="modalPreco"></p>
-      <p id="modalDescricao"></p>
-
-      <div id="modalTamanhos" style="margin: 15px 0;"></div>
-      <div class="cores-modal" id="modalCores"></div>
-
-      <button class="comprar-modal">Adicionar ao carrinhos</button>
-    </div>
-  </div>
+</div>
 
 <script>
-  fetch('Header.html')
-    .then(res => res.text())
-    .then(html => document.getElementById('header-container').innerHTML = html);
-
-  fetch('ESTAÇÕES.html')
-    .then(res => res.text())
-    .then(html => document.getElementById('ESTAÇÕES-container').innerHTML = html);
-
-   const produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+  // Pega produtos do localStorage, se não tem, array vazio
+  const produtos = JSON.parse(localStorage.getItem("produtos")) || [];
 
   // Filtra só os produtos da categoria menina
   const produtosMenina = produtos.filter(p => p.categoria === "menina");
@@ -418,6 +347,6 @@
     fecharModal();
   });
 </script>
+
 </body>
 </html>
-

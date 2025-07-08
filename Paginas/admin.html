@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Admin - Gerenciar Produtos</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #fdf3e9;
+    margin: 0;
+    padding: 20px;
+  }
+
+  header {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  button.nav-btn {
+    background-color: #d81b60;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  button.nav-btn:hover, button.nav-btn.active {
+    background-color: #c2185b;
+  }
+
+  /* FORMULÁRIO ADD PRODUTO */
+  #formProduto {
+    max-width: 400px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  }
+
+  #formProduto label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #d81b60;
+    font-weight: bold;
+  }
+
+  #formProduto input[type=text],
+  #formProduto select,
+  #formProduto textarea,
+  #formProduto input[type=file] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  #formProduto textarea {
+    resize: vertical;
+  }
+
+  #formProduto button.submit-btn {
+    margin-top: 15px;
+    background-color: #d81b60;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+  #formProduto button.submit-btn:hover {
+    background-color: #c2185b;
+  }
+
+  /* TABELA MODIFICAR PRODUTOS */
+  #tabelaProdutos {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  #tabelaProdutos thead {
+    background-color: #d81b60;
+    color: white;
+  }
+
+  #tabelaProdutos th, #tabelaProdutos td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  #tabelaProdutos tbody tr:hover {
+    background-color: #f9e0eb;
+  }
+
+  #tabelaProdutos img {
+    max-width: 60px;
+    border-radius: 6px;
+  }
+
+  .acoes-btn {
+    display: flex;
+    gap: 10px;
+  }
+
+  .acoes-btn button {
+    background-color: #d81b60;
+    border: none;
+    padding: 6px 12px;
+    color: white;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .acoes-btn button:hover {
+    background-color: #c2185b;
+  }
+  .acoes-btn button.apagar {
+    background-color: #ff4d6d;
+  }
+  .acoes-btn button.apagar:hover {
+    background-color: #e63950;
+  }
+
+  /* MODAL EDITAR */
+  .modal-bg {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+    z-index: 99;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal {
+    background: white;
+    border-radius: 15px;
+    max-width: 600px;
+    width: 90%;
+    padding: 30px;
+    position: relative;
+  }
+
+  .modal label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: bold;
+    color: #d81b60;
+  }
+
+  .modal input[type=text],
+  .modal textarea,
+  .modal select,
+  .modal input[type=file] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  .modal textarea {
+    resize: vertical;
+  }
+
+  .modal .fechar {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    color: #d81b60;
+  }
+
+  .modal button.save-btn {
+    margin-top: 20px;
+    background-color: #d81b60;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+
+  .modal button.save-btn:hover {
+    background-color: #c2185b;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <button id="btnAdd" class="nav-btn active">Adicionar Produto</button>
+  <button id="btnModificar" class="nav-btn">Modificar Produtos</button>
+</header>
+
+<section id="addSection">
+  <form id="formProduto">
+    <label for="nome">Nome</label>
+    <input type="text" id="nome" required />
+
+    <label for="descricao">Descrição</label>
+    <textarea id="descricao" rows="3" required></textarea>
+
+    <label for="preco">Preço</label>
+    <input type="text" id="preco" required />
+
+    <label for="categoria">Categoria</label>
+    <select id="categoria" required>
+      <option value="">Selecione</option>
+      <option value="menina">Menina</option>
+      <option value="menino">Menino</option>
+      <option value="bebe">Bebê</option>
+    </select>
+
+    <label for="cores">Cores (separe por vírgula)</label>
+    <input type="text" id="cores" placeholder="ex: #ff0000,#00ff00,#0000ff" required />
+
+    <label for="tamanhos">Tamanhos (separe por vírgula)</label>
+    <input type="text" id="tamanhos" placeholder="ex: P,M,G,GG" />
+
+    <label for="imagem">Imagem</label>
+    <input type="file" id="imagem" accept="image/*" required />
+
+    <button type="submit" class="submit-btn">Adicionar Produto</button>
+  </form>
+</section>
+
+<section id="modificarSection" style="display:none;">
+  <table id="tabelaProdutos">
+    <thead>
+      <tr>
+        <th>Imagem</th>
+        <th>Nome</th>
+        <th>Categoria</th>
+        <th>Preço</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody id="tbodyProdutos">
+      <!-- Produtos vão aqui -->
+    </tbody>
+  </table>
+</section>
+
+<!-- Modal editar produto -->
+<div class="modal-bg" id="modalEditar">
+  <div class="modal">
+    <button class="fechar" onclick="fecharModalEditar()">✖</button>
+    <form id="formEditarProduto">
+      <label for="editNome">Nome</label>
+      <input type="text" id="editNome" required />
+
+      <label for="editDescricao">Descrição</label>
+      <textarea id="editDescricao" rows="3" required></textarea>
+
+      <label for="editPreco">Preço</label>
+      <input type="text" id="editPreco" required />
+
+      <label for="editCategoria">Categoria</label>
+      <select id="editCategoria" required>
+        <option value="menina">Menina</option>
+        <option value="menino">Menino</option>
+        <option value="bebe">Bebê</option>
+      </select>
+
+      <label for="editCores">Cores (separe por vírgula)</label>
+      <input type="text" id="editCores" required />
+
+      <label for="editTamanhos">Tamanhos (separe por vírgula)</label>
+      <input type="text" id="editTamanhos" />
+
+      <label for="editImagem">Imagem (troque para atualizar)</label>
+      <input type="file" id="editImagem" accept="image/*" />
+
+      <button type="submit" class="save-btn">Salvar Alterações</button>
+    </form>
+  </div>
+</div>
+
+
+<script>
+  const btnAdd = document.getElementById('btnAdd');
+  const btnModificar = document.getElementById('btnModificar');
+  const addSection = document.getElementById('addSection');
+  const modificarSection = document.getElementById('modificarSection');
+
+  btnAdd.onclick = () => {
+    btnAdd.classList.add('active');
+    btnModificar.classList.remove('active');
+    addSection.style.display = 'block';
+    modificarSection.style.display = 'none';
+  };
+
+  btnModificar.onclick = () => {
+    btnModificar.classList.add('active');
+    btnAdd.classList.remove('active');
+    addSection.style.display = 'none';
+    modificarSection.style.display = 'block';
+    carregarTabela();
+  };
+
+  // Produtos salvos no localStorage
+  let produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+
+  // Form adicionar produto
+  const formProduto = document.getElementById('formProduto');
+  const inputImagem = document.getElementById('imagem');
+
+  formProduto.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const nome = document.getElementById('nome').value.trim();
+    const descricao = document.getElementById('descricao').value.trim();
+    const preco = document.getElementById('preco').value.trim();
+    const categoria = document.getElementById('categoria').value;
+    const cores = document.getElementById('cores').value.split(',').map(c => c.trim()).filter(c => c);
+    const tamanhos = document.getElementById('tamanhos').value.split(',').map(t => t.trim()).filter(t => t);
+
+    if(!inputImagem.files[0]){
+      alert('Por favor, selecione uma imagem!');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(event){
+      const imagemBase64 = event.target.result;
+
+      const novoProduto = {
+        id: Date.now(),
+        nome,
+        descricao,
+        preco,
+        categoria,
+        cores,
+        tamanhos,
+        imagem: imagemBase64
+      };
+
+      produtos.push(novoProduto);
+      localStorage.setItem('produtos', JSON.stringify(produtos));
+
+      alert('Produto adicionado com sucesso!');
+
+      formProduto.reset();
+    };
+    reader.readAsDataURL(inputImagem.files[0]);
+  });
+
+  // FUNÇÃO PARA CARREGAR A TABELA DE PRODUTOS
+  const tbodyProdutos = document.getElementById('tbodyProdutos');
+  function carregarTabela(){
+    tbodyProdutos.innerHTML = '';
+    produtos.forEach(prod => {
+      const tr = document.createElement('tr');
+
+      tr.innerHTML = `
+        <td><img src="${prod.imagem}" alt="${prod.nome}" /></td>
+        <td>${prod.nome}</td>
+        <td>${prod.categoria}</td>
+        <td>${prod.preco}</td>
+        <td class="acoes-btn">
+          <button onclick="editarProduto(${prod.id})">Editar</button>
+          <button class="apagar" onclick="apagarProduto(${prod.id})">Apagar</button>
+        </td>
+      `;
+
+      tbodyProdutos.appendChild(tr);
+    });
+  }
+
+  // MODAL EDITAR PRODUTO
+  const modalEditar = document.getElementById('modalEditar');
+  const formEditarProduto = document.getElementById('formEditarProduto');
+  let idEditando = null;
+  let imagemEditBase64 = null;
+
+  function editarProduto(id){
+    idEditando = id;
+    const produto = produtos.find(p => p.id === id);
+    if(!produto) return alert('Produto não encontrado');
+
+    document.getElementById('editNome').value = produto.nome;
+    document.getElementById('editDescricao').value = produto.descricao;
+    document.getElementById('editPreco').value = produto.preco;
+    document.getElementById('editCategoria').value = produto.categoria;
+    document.getElementById('editCores').value = produto.cores.join(',');
+    document.getElementById('editTamanhos').value = produto.tamanhos.join(',');
+    imagemEditBase64 = produto.imagem;
+
+    modalEditar.style.display = 'flex';
+  }
+
+  function fecharModalEditar(){
+    modalEditar.style.display = 'none';
+    formEditarProduto.reset();
+    imagemEditBase64 = null;
+    idEditando = null;
+  }
+
+  // Atualiza imagem se trocar arquivo no editar
+  document.getElementById('editImagem').addEventListener('change', function(){
+    if(this.files && this.files[0]){
+      const reader = new FileReader();
+      reader.onload = function(e){
+        imagemEditBase64 = e.target.result;
+      };
+      reader.readAsDataURL(this.files[0]);
+    }
+  });
+
+  formEditarProduto.addEventListener('submit', e => {
+    e.preventDefault();
+    if(idEditando === null) return;
+
+    const nome = document.getElementById('editNome').value.trim();
+    const descricao = document.getElementById('editDescricao').value.trim();
+    const preco = document.getElementById('editPreco').value.trim();
+    const categoria = document.getElementById('editCategoria').value;
+    const cores = document.getElementById('editCores').value.split(',').map(c => c.trim()).filter(c => c);
+    const tamanhos = document.getElementById('editTamanhos').value.split(',').map(t => t.trim()).filter(t => t);
+
+    // Atualiza o produto no array
+    const index = produtos.findIndex(p => p.id === idEditando);
+    if(index === -1) return alert('Produto não encontrado para editar.');
+
+    produtos[index] = {
+      ...produtos[index],
+      nome,
+      descricao,
+      preco,
+      categoria,
+      cores,
+      tamanhos,
+      imagem: imagemEditBase64 || produtos[index].imagem
+    };
+
+    localStorage.setItem('produtos', JSON.stringify(produtos));
+    carregarTabela();
+    fecharModalEditar();
+    alert('Produto atualizado!');
+  });
+
+  // Apagar produto
+  function apagarProduto(id){
+    if(!confirm('Tem certeza que deseja apagar esse produto?')) return;
+    produtos = produtos.filter(p => p.id !== id);
+    localStorage.setItem('produtos', JSON.stringify(produtos));
+    carregarTabela();
+  }
+
+  // Inicializar com a tabela carregada (se já estiver na seção modificar)
+  if(modificarSection.style.display === 'block'){
+    carregarTabela();
+  }
+</script>
+
+</body>
+</html>
