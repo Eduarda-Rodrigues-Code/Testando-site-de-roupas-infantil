@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Roupas de Meninos</title>
-  <script src="produto.js"></script>
   <style>
  body {
       margin: 0;
@@ -299,7 +298,7 @@
     <main id="produtos" class="produtos"></main>
   </div>
 
-  <script src="produtos.js"></script>
+
 <script>
   fetch('Header.html')
     .then(res => res.text())
@@ -309,26 +308,29 @@
     .then(res => res.text())
     .then(html => document.getElementById('ESTAÇÕES-container').innerHTML = html);
 
-  const container = document.getElementById("produtos");
+   const produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+
+  // Filtra só os produtos da categoria menino
   const produtosMenino = produtos.filter(p => p.categoria === "menino");
+
+  const container = document.getElementById("produtos");
 
   produtosMenino.forEach(produto => {
     const card = document.createElement("div");
     card.classList.add("card");
 
     const coresHtml = produto.cores.map(cor =>
-      `<span style="background-color: ${cor}; display:inline-block; width:12px; height:12px; border-radius:50%; margin-right: 4px;"></span>`
+      `<span style="background-color: ${cor};"></span>`
     ).join("");
 
     card.innerHTML = `
-      <span class="tag">New</span>
-      <img src="${produto.imagens[0]}" alt="${produto.nome}" />
+      <img src="${produto.imagem}" alt="${produto.nome}" />
       <div class="info">
         <div class="cores">${coresHtml}</div>
         <h3>${produto.nome}</h3>
         <p>${produto.preco}</p>
         <div class="botoes">
-          <button class="comprar" onclick='abrirModal(${JSON.stringify(produto)})'>Detalhes da peça</button>
+          <button class="comprar" onclick='abrirModal(${JSON.stringify(produto)})'>Comprar</button>
         </div>
       </div>
     `;
@@ -340,26 +342,28 @@
   let imagemAtual = 0;
 
   function abrirModal(produto) {
-    imagensProduto = produto.imagens;
+    imagensProduto = [produto.imagem]; // seu admin salva uma imagem só, né?
     imagemAtual = 0;
     document.getElementById("modalImagem").src = imagensProduto[imagemAtual];
     document.getElementById("modalNome").textContent = produto.nome;
     document.getElementById("modalPreco").textContent = produto.preco;
     document.getElementById("modalDescricao").textContent = produto.descricao;
 
-    // Tamanhos
+    // Tamanhos (se tiver tamanhos, ou deixa vazio)
     const tamanhosContainer = document.getElementById("modalTamanhos");
     tamanhosContainer.innerHTML = "";
-    produto.tamanhos.forEach(tamanho => {
-      const btn = document.createElement("button");
-      btn.textContent = tamanho;
-      btn.className = "btn-tamanho";
-      btn.onclick = () => {
-        document.querySelectorAll(".btn-tamanho").forEach(b => b.classList.remove("selecionado"));
-        btn.classList.add("selecionado");
-      };
-      tamanhosContainer.appendChild(btn);
-    });
+    if(produto.tamanhos && produto.tamanhos.length){
+      produto.tamanhos.forEach(tamanho => {
+        const btn = document.createElement("button");
+        btn.textContent = tamanho;
+        btn.className = "btn-tamanho";
+        btn.onclick = () => {
+          document.querySelectorAll(".btn-tamanho").forEach(b => b.classList.remove("selecionado"));
+          btn.classList.add("selecionado");
+        };
+        tamanhosContainer.appendChild(btn);
+      });
+    }
 
     // Cores
     const coresContainer = document.getElementById("modalCores");
@@ -380,16 +384,6 @@
 
   function fecharModal() {
     document.getElementById("modalBg").style.display = "none";
-  }
-
-  // Navegação simples das imagens do produto
-  // (botões podem ser adicionados se quiser)
-  // aqui só para manter caso queira adicionar futuramente
-  function mudarImagem(direcao) {
-    imagemAtual += direcao;
-    if (imagemAtual < 0) imagemAtual = imagensProduto.length - 1;
-    if (imagemAtual >= imagensProduto.length) imagemAtual = 0;
-    document.getElementById("modalImagem").src = imagensProduto[imagemAtual];
   }
 
   document.querySelector(".comprar-modal").addEventListener("click", () => {

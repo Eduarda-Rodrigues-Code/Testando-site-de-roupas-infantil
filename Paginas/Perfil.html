@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #fffaf5;
+      background-color: #ffffff;
       color: #444;
     }
 
@@ -133,9 +133,10 @@
   </style>
 </head>
 <body>
+<div id="header-container"></div>
 
   <div class="perfil-topo">
-    <img src="https://i.imgur.com/Qw1ZV2z.png" alt="Foto da Eduarda" id="fotoPerfil" onclick="editarFoto()" title="Clique para trocar a foto">
+    <img src="https://i.imgur.com/Qw1ZV2z.png" alt="" id="fotoPerfil" onclick="editarFoto()" title="Clique para trocar a foto">
     <div class="info">
       <h2 id="nomeUsuario">
         Eduarda Rodrigues
@@ -159,7 +160,7 @@
         <div class="icon-circle">🛒</div>
         Carrinho
       </a>
-      <a href="rastreamento.html" class="icon-btn">
+      <a href="Rastreamento.html" class="icon-btn">
         <div class="icon-circle">🚚</div>
         Rastreio
       </a>
@@ -204,6 +205,12 @@
   </div>
 
   <script>
+    fetch('Header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('header-container').innerHTML = data;
+    })
+    .catch(error => console.error('Erro ao carregar o header:', error));
     function editarNome() {
       const nomeAtual = document.getElementById('nomeUsuario');
       const nomeTexto = nomeAtual.childNodes[0].nodeValue.trim();

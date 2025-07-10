@@ -6,10 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Meus Pedidos</title>
   <style>
+    *{
+      padding: 0%;
+      margin: 0%;
+    }
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #fff8fb;
-      padding: 20px;
     }
 
     h1 {
@@ -59,10 +62,16 @@
   </style>
 </head>
 <body>
+  <div id="header-container"></div>
+<br>
   <h1>🛍️ Meus Pedidos</h1>
   <div id="listaPedidos"></div>
 
   <script>
+     fetch('Header.html')
+    .then(res => res.text())
+    .then(html => document.getElementById('header-container').innerHTML = html);
+
     const lista = document.getElementById('listaPedidos');
     const pedidos = JSON.parse(localStorage.getItem('pedidos')) || [];
 

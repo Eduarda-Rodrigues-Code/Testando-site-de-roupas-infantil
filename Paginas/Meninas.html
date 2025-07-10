@@ -256,7 +256,7 @@
   border: 2px solid transparent;
   cursor: pointer;
   transition: all 0.2s ease;
-  margin-right: 8px; /* espacinho lateral */
+  margin-right: 8px; 
 }
 
 .cor-bolinha.selecionado {
@@ -264,6 +264,13 @@
   border-color: #ff2580;
 }
 
+#pesquisa{
+width: 300px;
+margin-top:  5px;
+border-radius: 30px;
+text-decoration: none;
+
+}
 
   </style>
 </head>
@@ -271,6 +278,10 @@
 <body>
   <div id="header-container"></div>
   <div id="ESTAÇÕES-container"></div>
+ 
+<div id="pesquisa">
+  <input type="text" id="campoBusca" placeholder="Pesquisar produto..." style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">
+</div>
 
   <div class="filtros">
     <h2>Filtrar por:</h2>
@@ -324,7 +335,7 @@
     ).join("");
 
     card.innerHTML = `
-      <span class="tag">New</span>
+ 
       <img src="${produto.imagem}" alt="${produto.nome}" />
       <div class="info">
         <div class="cores">${coresHtml}</div>
@@ -417,6 +428,18 @@
     alert(`${nome} adicionado ao carrinho!`);
     fecharModal();
   });
+  const campoBusca = document.getElementById("campoBusca");
+const cards = Array.from(document.querySelectorAll(".card"));
+
+campoBusca.addEventListener("input", function () {
+  const termo = this.value.toLowerCase();
+
+  cards.forEach(card => {
+    const nome = card.querySelector("h3").textContent.toLowerCase();
+    card.style.display = nome.includes(termo) ? "block" : "none";
+  });
+});
+
 </script>
 </body>
 </html>
