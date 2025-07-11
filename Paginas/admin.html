@@ -5,210 +5,189 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Admin - Gerenciar Produtos</title>
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #fdf3e9;
-    margin: 0;
-    padding: 20px;
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f9f9f9;
+    }
+      button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
   }
-
-  header {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-
-  button.nav-btn {
-    background-color: #d81b60;
+  button.active {
+    background-color: #007bff;
     color: white;
     border: none;
-    padding: 12px 20px;
-    font-weight: 700;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
   }
-  button.nav-btn:hover, button.nav-btn.active {
-    background-color: #c2185b;
-  }
-
-  /* FORMULÁRIO ADD PRODUTO */
-  #formProduto {
-    max-width: 400px;
-    background: #fff;
+  section {
+    margin-top: 20px;
+    background: white;
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border-radius: 5px;
   }
-
-  #formProduto label {
-    display: block;
-    margin: 10px 0 5px;
-    color: #d81b60;
-    font-weight: bold;
-  }
-
-  #formProduto input[type=text],
-  #formProduto select,
-  #formProduto textarea,
-  #formProduto input[type=file] {
-    width: 100%;
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    box-sizing: border-box;
-  }
-
-  #formProduto textarea {
-    resize: vertical;
-  }
-
-  #formProduto button.submit-btn {
-    margin-top: 15px;
-    background-color: #d81b60;
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-  }
-  #formProduto button.submit-btn:hover {
-    background-color: #c2185b;
-  }
-
-  /* TABELA MODIFICAR PRODUTOS */
-  #tabelaProdutos {
+  table {
     width: 100%;
     border-collapse: collapse;
-    background: white;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    border-radius: 12px;
-    overflow: hidden;
+    margin-top: 10px;
   }
-
-  #tabelaProdutos thead {
-    background-color: #d81b60;
-    color: white;
-  }
-
-  #tabelaProdutos th, #tabelaProdutos td {
-    padding: 12px 15px;
-    text-align: left;
+  th, td {
+    padding: 10px;
     border-bottom: 1px solid #ddd;
+    text-align: left;
   }
-
-  #tabelaProdutos tbody tr:hover {
-    background-color: #f9e0eb;
-  }
-
-  #tabelaProdutos img {
+  td img {
     max-width: 60px;
-    border-radius: 6px;
+    max-height: 60px;
+    border-radius: 4px;
   }
-
-  .acoes-btn {
-    display: flex;
-    gap: 10px;
-  }
-
   .acoes-btn button {
-    background-color: #d81b60;
-    border: none;
-    padding: 6px 12px;
-    color: white;
-    font-weight: 700;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .acoes-btn button:hover {
-    background-color: #c2185b;
+    margin-right: 5px;
+    padding: 5px 10px;
   }
   .acoes-btn button.apagar {
-    background-color: #ff4d6d;
-  }
-  .acoes-btn button.apagar:hover {
-    background-color: #e63950;
-  }
-
-  /* MODAL EDITAR */
-  .modal-bg {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    backdrop-filter: blur(5px);
-    z-index: 99;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .modal {
-    background: white;
-    border-radius: 15px;
-    max-width: 600px;
-    width: 90%;
-    padding: 30px;
-    position: relative;
-  }
-
-  .modal label {
-    display: block;
-    margin: 12px 0 6px;
-    font-weight: bold;
-    color: #d81b60;
-  }
-
-  .modal input[type=text],
-  .modal textarea,
-  .modal select,
-  .modal input[type=file] {
-    width: 100%;
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  }
-
-  .modal textarea {
-    resize: vertical;
-  }
-
-  .modal .fechar {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 22px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-weight: 700;
-    color: #d81b60;
-  }
-
-  .modal button.save-btn {
-    margin-top: 20px;
-    background-color: #d81b60;
+    background-color: #dc3545;
     color: white;
     border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 16px;
+  }
+  .paleta-cores {
+    margin: 10px 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .bola-cor {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid transparent;
     cursor: pointer;
+    transition: border-color 0.3s;
+  }
+  .bola-cor.selecionada {
+    border-color: #000;
+  }
+  .bola-cor[title="#FF0000"] { background-color: #FF0000; }
+  .bola-cor[title="#FF7F00"] { background-color: #FF7F00; }
+  .bola-cor[title="#FFFF00"] { background-color: #FFFF00; }
+  .bola-cor[title="#00FF00"] { background-color: #00FF00; }
+  .bola-cor[title="#0000FF"] { background-color: #0000FF; }
+  .bola-cor[title="#4B0082"] { background-color: #4B0082; }
+  .bola-cor[title="#8B00FF"] { background-color: #8B00FF; }
+  .bola-cor[title="#000000"] { background-color: #000000; }
+  .bola-cor[title="#FFFFFF"] { background-color: #FFFFFF; border: 1px solid #ccc; }
+  #modalEditar {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+  #modalEditar .modal {
+    background: white;
+    padding: 20px;
     width: 100%;
-    transition: background-color 0.3s ease;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   }
-
-  .modal button.save-btn:hover {
-    background-color: #c2185b;
+  #modalEditar .modal button.fechar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
   }
+  input[type="text"], input[type="number"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 16px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+  }
+  .save-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .save-btn:hover {
+    background-color: #218838;
+  }
+    /* Paleta de cores */
+    .paleta-cores {
+      margin: 10px 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .bola-cor {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+    .bola-cor.selecionada {
+      border-color: #000;
+    }
+    /* Modal */
+    #modalEditar {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+    #modalEditar .modal-conteudo {
+      background: white;
+      padding: 20px;
+      width: 400px;
+      max-width: 90%;
+      border-radius: 8px;
+      position: relative;
+    }
+    #modalEditar .modal-conteudo h2 {
+      margin-top: 0;
+    }
+    #modalEditar .modal-conteudo button.fechar {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    input[type="text"], input[type="number"], select, textarea {
+      width: 100%;
+      padding: 6px;
+      margin: 6px 0 12px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    label {
+      font-weight: bold;
+    }
 </style>
 </head>
 <body>
@@ -216,6 +195,7 @@
 <header>
   <button id="btnAdd" class="nav-btn active">Adicionar Produto</button>
   <button id="btnModificar" class="nav-btn">Modificar Produtos</button>
+  <button id="btnPedido" class="nav-btn">Rastreamento</button>
 </header>
 
 <section id="addSection">
@@ -237,8 +217,12 @@
       <option value="bebe">Bebê</option>
     </select>
 
-    <label for="cores">Cores (separe por vírgula)</label>
-    <input type="text" id="cores" placeholder="ex: #ff0000,#00ff00,#0000ff" required />
+   <!-- Paleta de cores - Adicionar -->
+<label>Cores:</label>
+<div id="paletaCores" class="paleta-cores"></div>
+<input type="hidden" id="cores" required />
+
+
 
     <label for="tamanhos">Tamanhos (separe por vírgula)</label>
     <input type="text" id="tamanhos" placeholder="ex: P,M,G,GG" />
@@ -288,8 +272,46 @@
         <option value="bebe">Bebê</option>
       </select>
 
-      <label for="editCores">Cores (separe por vírgula)</label>
-      <input type="text" id="editCores" required />
+
+<label>Cores:</label>
+<div class="paleta-cores" id="paletaCoresEditar">
+  <!-- Rosa -->
+  <div class="bola-cor" style="background-color: #FFC0CB;" data-color="#FFC0CB" title="Rosa Claro"></div>
+  <div class="bola-cor" style="background-color: #FF69B4;" data-color="#FF69B4" title="Rosa Médio"></div>
+  <div class="bola-cor" style="background-color: #C71585;" data-color="#C71585" title="Rosa Escuro"></div>
+
+  <!-- Roxo / Lilás -->
+  <div class="bola-cor" style="background-color: #E6E6FA;" data-color="#E6E6FA" title="Lilás Claro"></div>
+  <div class="bola-cor" style="background-color: #9370DB;" data-color="#9370DB" title="Roxo Médio"></div>
+  <div class="bola-cor" style="background-color: #663399;" data-color="#663399" title="Roxo Escuro"></div>
+
+  <!-- Azul -->
+  <div class="bola-cor" style="background-color: #ADD8E6;" data-color="#ADD8E6" title="Azul Claro"></div>
+  <div class="bola-cor" style="background-color: #4682B4;" data-color="#4682B4" title="Azul Médio"></div>
+  <div class="bola-cor" style="background-color: #000080;" data-color="#000080" title="Azul Escuro"></div>
+
+  <!-- Verde -->
+  <div class="bola-cor" style="background-color: #90EE90;" data-color="#90EE90" title="Verde Claro"></div>
+  <div class="bola-cor" style="background-color: #00FF7F;" data-color="#00FF7F" title="Verde Médio"></div>
+  <div class="bola-cor" style="background-color: #006400;" data-color="#006400" title="Verde Escuro"></div>
+
+  <!-- Amarelo / Laranja -->
+  <div class="bola-cor" style="background-color: #FFFFE0;" data-color="#FFFFE0" title="Amarelo Claro"></div>
+  <div class="bola-cor" style="background-color: #FFD700;" data-color="#FFD700" title="Amarelo Médio"></div>
+  <div class="bola-cor" style="background-color: #FF8C00;" data-color="#FF8C00" title="Laranja Escuro"></div>
+
+  <!-- Marrom -->
+  <div class="bola-cor" style="background-color: #D2B48C;" data-color="#D2B48C" title="Marrom Claro"></div>
+  <div class="bola-cor" style="background-color: #A0522D;" data-color="#A0522D" title="Marrom Médio"></div>
+  <div class="bola-cor" style="background-color: #654321;" data-color="#654321" title="Marrom Escuro"></div>
+
+  <!-- Neutros -->
+  <div class="bola-cor" style="background-color: #FFFFFF; border: 1px solid #ccc;" data-color="#FFFFFF" title="Branco"></div>
+  <div class="bola-cor" style="background-color: #A9A9A9;" data-color="#A9A9A9" title="Cinza Médio"></div>
+  <div class="bola-cor" style="background-color: #000000;" data-color="#000000" title="Preto"></div>
+</div>
+
+<input type="hidden" id="editCores" />
 
       <label for="editTamanhos">Tamanhos (separe por vírgula)</label>
       <input type="text" id="editTamanhos" />
@@ -303,7 +325,11 @@
 </div>
 
 
+
 <script>
+
+
+
   const btnAdd = document.getElementById('btnAdd');
   const btnModificar = document.getElementById('btnModificar');
   const addSection = document.getElementById('addSection');
@@ -477,6 +503,102 @@
   if(modificarSection.style.display === 'block'){
     carregarTabela();
   }
+
+  // Cores disponíveis
+const paletaCores = [
+  //  Rosa
+  '#FFC0CB', // Rosa Claro
+  '#FF69B4', // Rosa Médio
+  '#C71585', // Rosa Escuro
+
+  //  Roxo / Lilás
+  '#E6E6FA', // Lilás Claro
+  '#9370DB', // Roxo Médio
+  '#663399', // Roxo Escuro
+
+  //  Azul
+  '#ADD8E6', // Azul Claro
+  '#4682B4', // Azul Médio
+  '#000080', // Azul Escuro
+
+  //  Verde
+  '#90EE90', // Verde Claro
+  '#00FF7F', // Verde Médio
+  '#006400', // Verde Escuro
+
+  //  Amarelo / Laranja
+  '#FFFFE0', // Amarelo Claro
+  '#FFD700', // Amarelo Médio
+  '#FF8C00', // Laranja Escuro
+
+  // Marrom
+  '#D2B48C', // Marrom Claro
+  '#A0522D', // Marrom Médio
+  '#654321', // Marrom Escuro
+
+  //  Neutros
+  '#FFFFFF', // Branco
+  '#A9A9A9', // Cinza Médio
+  '#000000'  // Preto
+
+];
+
+// Adicionar Produto - Paleta
+const paletaContainerAdd = document.getElementById('paletaCores');
+const inputCoresAdd = document.getElementById('cores');
+let coresSelecionadas = [];
+
+function atualizarInputCores() {
+  inputCoresAdd.value = coresSelecionadas.join(',');
+}
+
+function criarPaletaAdd() {
+  paletaContainerAdd.innerHTML = '';
+  coresSelecionadas = [];
+
+  paletaCores.forEach(cor => {
+    const bola = document.createElement('div');
+    bola.style.backgroundColor = cor;
+    bola.className = 'bola-cor';
+    bola.title = cor;
+
+    bola.addEventListener('click', () => {
+      if (coresSelecionadas.includes(cor)) {
+        coresSelecionadas = coresSelecionadas.filter(c => c !== cor);
+        bola.classList.remove('selecionada');
+      } else {
+        coresSelecionadas.push(cor);
+        bola.classList.add('selecionada');
+      }
+      atualizarInputCores();
+    });
+
+    paletaContainerAdd.appendChild(bola);
+  });
+
+  atualizarInputCores();
+}
+
+criarPaletaAdd();
+
+// Editar Produto - Paleta
+  const bolasEditar = document.querySelectorAll('#paletaCoresEditar .bola-cor');
+  const inputEditCores = document.getElementById('editCores');
+  let coresSelecionadasEditar = [];
+
+  bolasEditar.forEach(bola => {
+    bola.addEventListener('click', () => {
+      const cor = bola.getAttribute('data-color');
+      if (coresSelecionadasEditar.includes(cor)) {
+        coresSelecionadasEditar = coresSelecionadasEditar.filter(c => c !== cor);
+        bola.classList.remove('selecionada');
+      } else {
+        coresSelecionadasEditar.push(cor);
+        bola.classList.add('selecionada');
+      }
+      inputEditCores.value = coresSelecionadasEditar.join(',');
+    });
+  });
 </script>
 
 </body>

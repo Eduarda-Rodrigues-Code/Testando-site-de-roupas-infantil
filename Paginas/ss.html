@@ -132,9 +132,10 @@
       <label for="categoria">Categoria:</label>
       <select id="categoria" required>
         <option value="">Selecione</option>
-        <option value="Roupas">Roupas</option>
-        <option value="Eletrônicos">Eletrônicos</option>
-        <option value="Calçados">Calçados</option>
+       <option value="menino">Menino</option>
+<option value="menina">Menina</option>
+<option value="bebe">Bebê</option>
+
       </select>
 
       <label>Cores:</label>
@@ -185,13 +186,14 @@
         <label for="editPreco">Preço:</label>
         <input type="number" id="editPreco" step="0.01" required />
 
-        <label for="editCategoria">Categoria:</label>
-        <select id="editCategoria" required>
-          <option value="">Selecione</option>
-          <option value="Roupas">Roupas</option>
-          <option value="Eletrônicos">Eletrônicos</option>
-          <option value="Calçados">Calçados</option>
-        </select>
+       <label for="categoria">Categoria:</label>
+<select id="categoria" required>
+  <option value="">Selecione</option>
+  <option value="menino">Menino</option>
+  <option value="menina">Menina</option>
+  <option value="bebe">Bebê</option>
+</select>
+
 
         <label>Cores:</label>
         <div id="paletaCoresEditar" class="paleta-cores"></div>
@@ -319,11 +321,21 @@
       produtos.push(novoProduto);
       localStorage.setItem('produtos', JSON.stringify(produtos));
 
-      alert('Produto adicionado com sucesso!');
+      aalert('Produto adicionado com sucesso!');
 
-      formProduto.reset();
-      coresSelecionadas = [];
-      atualizarInputCores();
+// Redireciona para a página da categoria
+if (categoria === 'menino') {
+  window.location.href = 'menino.html';
+} else if (categoria === 'menina') {
+  window.location.href = 'menina.html';
+} else if (categoria === 'bebe') {
+  window.location.href = 'bebe.html';
+} else {
+  formProduto.reset();
+  coresSelecionadas = [];
+  atualizarInputCores();
+}
+
     };
     reader.readAsDataURL(inputImagem.files[0]);
   });

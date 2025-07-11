@@ -10,65 +10,66 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color:  #FFF4E8;;
+  background-color:  #FFF4E8;
+  
 }
 
+carrossel-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
 
-.banner {
-  background-color: #F5D2B6; /* cor de fundo bege */
-  padding: 40px 0;
-}
+   .carrossel {
+      position: relative;
+      width: 1700px;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      margin: 0 auto; /* CENTRALIZA */
+    }
 
-.banner-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 40px;
-  position: relative;
-}
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
 
-.banner-left img,
-.banner-right img {
-  max-height: 320px;
-  object-fit: contain;
-}
+    .slide {
+      min-width: 100%;
+      height: 400px;
+    }
 
-.banner-text {
-  text-align: center;
-  max-width: 400px;
-  color: #5E2C2C;
-}
+    .slide img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
 
-.banner-text h2 {
-  font-size: 36px;
-  font-family: 'DM Serif Display', serif;
-  margin-bottom: 10px;
-}
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      padding: 12px;
+      cursor: pointer;
+      font-size: 18px;
+      z-index: 1;
+    }
 
-.banner-text p {
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 1.4;
-  color: #4C2B2B;
-  margin-bottom: 20px;
-}
+    .prev {
+      left: 10px;
+    }
 
-.banner-text button {
-  background-color: #4C2B2B; /* marrom escuro */
-  color: #fff;
-  border: none;
-  padding: 10px 30px;
-  border-radius: 25px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-}
+    .next {
+      right: 10px;
+    }
 
-.banner-text button:hover {
-  background-color: #371e1e;
-}
+    
+
+
 .produtos {
   display: flex;
   justify-content: center;
@@ -215,23 +216,18 @@ body {
 
 <div id="header-container"></div>
 <br><br><br>
-<section class="banner" style="margin-bottom: -45px;">
-  <div class="banner-content">
-    <div class="banner-left">
-       <img src="img/BANNER.png" alt="BANNER">
+<div class="carrossel">
+    <div class="slides" id="slides">
+      <div class="slide"><img src="img/1.png" alt="Imagem 1"></div>
+      <div class="slide"><img src="img/2.png" alt="Imagem 2"></div>
+      <!-- <div class="slide"><img src="https://picsum.photos/id/1018/800/400" alt="Imagem 3"></div> -->
     </div>
-
-    <div class="banner-text">
-      <h2>Coleção Outono 2025</h2>
-      <p>Conjuntos de Tricô<br>aconchegantes e versáteis</p>
-      <button>Confira</button>
-    </div>
-
-    <div class="banner-right">
-      <img src="img/BANNER 2.png" alt="Criança com casaco vermelho">
-    </div>
+    <button class="nav-button prev" onclick="voltarSlide()">&#10094;</button>
+    <button class="nav-button next" onclick="avancarSlide()">&#10095;</button>
   </div>
-</section>
+
+
+
 <section class="produtos">
   <div class="card">
     <img src="img/INDEX/card1.png" alt="Conjuntinho de Verão Feminino">
@@ -313,6 +309,30 @@ body {
       document.getElementById('header-container').innerHTML = data;
     })
     .catch(error => console.error('Erro ao carregar o header:', error));
+
+    
+
+  const slides = document.getElementById('slides');
+    const totalSlides = slides.children.length;
+    let index = 0;
+
+    function mostrarSlide(i) {
+      index = (i + totalSlides) % totalSlides;
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function avancarSlide() {
+      mostrarSlide(index + 1);
+    }
+
+    function voltarSlide() {
+      mostrarSlide(index - 1);
+    }
+
+    setInterval(() => {
+      avancarSlide();
+    }, 4000); // Muda a cada 4 segundos
 </script>
+
 </body>
 </html>
