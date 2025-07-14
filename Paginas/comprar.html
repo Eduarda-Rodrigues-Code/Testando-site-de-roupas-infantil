@@ -103,10 +103,22 @@
   <button id="pagarBtn">Pagar</button>
   </div>
 </div>
+<br><br>
+<div id="footer-container"></div>
+
   <script>
      fetch('Header.html')
     .then(res => res.text())
     .then(html => document.getElementById('header-container').innerHTML = html);
+
+    
+        fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    })
+    .catch(error => console.error('Erro ao carregar o footer:', error));
+
 
     const produtosContainer = document.getElementById('produtosContainer');
     const totalEl = document.getElementById('total');

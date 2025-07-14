@@ -203,6 +203,8 @@
       </a>
     </div>
   </div>
+  <br><br><br><br><br><br><br>
+<div id="footer-container"></div>
 
   <script>
     fetch('Header.html')
@@ -210,6 +212,24 @@
     .then(data => {
       document.getElementById('header-container').innerHTML = data;
     })
+
+    
+        fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    })
+    .catch(error => console.error('Erro ao carregar o footer:', error));
+
+
+    fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    })
+
+
+
     .catch(error => console.error('Erro ao carregar o header:', error));
     function editarNome() {
       const nomeAtual = document.getElementById('nomeUsuario');

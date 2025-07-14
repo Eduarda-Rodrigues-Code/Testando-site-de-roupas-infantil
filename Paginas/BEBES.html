@@ -315,6 +315,14 @@
   </div>
 <script src="produtosBEBE.js"></script>
   <script>
+    
+        fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    })
+    .catch(error => console.error('Erro ao carregar o footer:', error));
+
   fetch('Header.html')
     .then(res => res.text())
     .then(html => document.getElementById('header-container').innerHTML = html);

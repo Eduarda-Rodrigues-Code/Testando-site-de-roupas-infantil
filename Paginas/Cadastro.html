@@ -7,7 +7,6 @@
   <style>
     * {
       box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
     }
 
     body {
@@ -150,10 +149,10 @@
         <h2>Entrar</h2>
         <label for="email">E-mail</label>
         <input type="email" id="emailLogin" placeholder="exemplo@email.com" />
-
+<br>
         <label for="senha">Senha</label>
         <input type="password" id="senhaLogin" placeholder="********" />
-
+<br>
         <button class="btn" onclick="login()">Entrar</button>
         <div class="toggle-link" onclick="flipCard()">Não tem conta? Cadastre-se</div>
       </div>
@@ -191,10 +190,23 @@
     </div>
   </div>
 </div>
+<br><br><br><br>
+<div id="footer-container"></div>
+
   <script>
+
      fetch('Header.html')
     .then(res => res.text())
     .then(html => document.getElementById('header-container').innerHTML = html);
+
+    
+        fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    })
+    .catch(error => console.error('Erro ao carregar o footer:', error));
+
 
     function flipCard() {
       document.getElementById('card').classList.toggle('flipped');

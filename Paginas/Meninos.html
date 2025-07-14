@@ -9,7 +9,6 @@
       margin: 0;
       padding: 0;
       background-color: #fdf3e9;
-      font-family: Arial, sans-serif;
     }
 
     .filtros {
@@ -298,11 +297,21 @@
     <main id="produtos" class="produtos"></main>
   </div>
 
+<div id="footer-container"></div>
 
 <script>
   fetch('Header.html')
     .then(res => res.text())
     .then(html => document.getElementById('header-container').innerHTML = html);
+
+    
+        fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    })
+    .catch(error => console.error('Erro ao carregar o footer:', error));
+
 
   fetch('ESTAÇÕES.html')
     .then(res => res.text())
