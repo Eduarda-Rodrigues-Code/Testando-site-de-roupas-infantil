@@ -9,7 +9,6 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
   background-color:  #FFF4E8;
   
 }
@@ -132,7 +131,7 @@ carrossel-container {
 
 .categoria-card {
   position: relative;
-  width: 900px;
+  width: 700px;
   border-radius: 12px;
   overflow: hidden;
   text-decoration: none;
@@ -149,7 +148,7 @@ carrossel-container {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: black;
+  background-color: #8AC0BF;
   color: white;
   padding: 10px 24px;
   border-radius: 25px;
@@ -191,11 +190,11 @@ carrossel-container {
     .sobre-texto h2 {
       font-size: 28px;
       margin-bottom: 20px;
-      color: #222;
+      color: #8AC0BF;
     }
 
     .sobre-texto p {
-      font-size: 17px;
+  font-size: 17px;
       line-height: 1.7;
       color: #333;
       margin-bottom: 10px;
@@ -222,38 +221,72 @@ carrossel-container {
         font-size: 24px;
       }
     }
-  .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-    }
+    
+.galeria-roupas {
+  padding: 60px 20px;
+  text-align: center;
+}
 
-    .card {
-      background-color: rgba(255, 255, 255, 0);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-      overflow: hidden;
-      width: 400px;
-      transition: transform 0.3s ease;
-    }
+.galeria-roupas h1 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  font-family: 'DM Serif Display', serif;
+  color: #8AC0BF;
+}
 
-    .card:hover {
-      transform: scale(1.03);
-    }
+.galeria-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
 
-    .card img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+.item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
 
-    @media (max-width: 768px) {
-      .card {
-        width: 100%;
-        max-width: 300px;
-      }
-    }
+.item img {
+  width: 400px;
+  height: 600PX;
+  display: block;
+  border-radius: 12px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.item:hover img {
+  transform: scale(1.03);
+}
+
+.item button {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #8AC0BF;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.item button:hover {
+  background-color: #5cc13b;
+}
+
+@media (max-width: 768px) {
+  .item {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+
     </style>
   <meta charset="UTF-8">
   <title>Pequeno Mundo</title>
@@ -278,38 +311,30 @@ carrossel-container {
   </div>
 
 <br><br>
-    <H1>Conheça nossas coleções das estações!</H1>
+<section class="galeria-roupas">
+  <h1>Coleção 2025 - ESTAÇÕES DO ANO</h1>
 
-  <div class="card-container">
-    <div class="card">
-      <img src="img/retrato-de-pessoas-patinando-no-gelo-ao-ar-livre-durante-o-inverno.jpg" alt="Imagem 1">
+  <div class="galeria-container">
+    <div class="item">
+      <img src="img/INVERNO.png" alt="Imagem 1">
+      <button>INVERNO</button>
     </div>
-    <div class="card">
+    <div class="item">
       <img src="img/meninas-brincando-na-praia-tiro-completo.jpg" alt="Imagem 2">
+      <button>VERÃO</button>
     </div>
-    <div class="card">
+    <div class="item">
       <img src="img/pessoas-recolhendo-comida-da-floresta.jpg" alt="Imagem 3">
+      <button>OUTONO</button>
     </div>
-    <div class="card">
+    <div class="item">
       <img src="img/criancas-se-divertindo-no-acampamento-de-verao.jpg" alt="Imagem 4">
+      <button>PRIMAVERA</button>
     </div>
-  </div>
-
-
-  
-<section class="sobre">
-    <img src="img/Mancha.png" alt="Criança sorrindo com blusa amarela">
-
-  <div class="sobre-texto">
-    <h2>Aqui no Pequeno Mundo</h2>
-    <p>Na Pequeno Mundo, vestir a infância é mais do que uma missão — é um gesto de amor, um carinho bordado em cada costura. Aqui, cada peça é pensada com cuidado para oferecer o que há de melhor em conforto, qualidade e estilo, acompanhando cada passo, sorriso e descoberta dos pequenos.</p>
-    <p>Do RN aos 11 anos, nossas roupas são feitas para abraçar cada fase do crescimento com leveza e alegria. Porque a infância é um universo mágico, onde cada dia é uma nova aventura — e todo aventureiro merece estar preparado com um look especial!</p>
-    <p>Mais do que moda infantil, oferecemos momentos. Momentos de brincadeira, de família reunida, de fotos espontâneas, de sorrisos no espelho. Acreditamos que se vestir pode ser divertido, criativo e cheio de personalidade, e por isso, nossas coleções são coloridas, modernas e feitas para acompanhar o ritmo da infância.</p>
   </div>
 </section>
 
-
-<section class="categorias">
+  <section class="categorias">
   <a href="Meninas.html" class="categoria-card">
     <img src="img/INDEX/MENINA BANNER.png" alt="Meninas">
     <div class="categoria-label">Meninas</div>
@@ -320,6 +345,19 @@ carrossel-container {
     <div class="categoria-label">Meninos</div>
   </a>
 </section>
+
+<section class="sobre">
+    <img src="img/Mancha.png" alt="Criança sorrindo com blusa amarela">
+
+  <div class="sobre-texto">
+    <h2>Aqui no Pequeno Mundo...</h2>
+    <p>Vestir a infância é mais do que uma missão — é um gesto de amor, um carinho bordado em cada costura. Aqui, cada peça é pensada com cuidado para oferecer o que há de melhor em conforto, qualidade e estilo, acompanhando cada passo, sorriso e descoberta dos pequenos.</p>
+    <p>Do RN aos 11 anos, nossas roupas são feitas para abraçar cada fase do crescimento com leveza e alegria. Porque a infância é um universo mágico, onde cada dia é uma nova aventura — e todo aventureiro merece estar preparado com um look especial!</p>
+    <p>Mais do que moda infantil, oferecemos momentos. Momentos de brincadeira, de família reunida, de fotos espontâneas, de sorrisos no espelho. Acreditamos que se vestir pode ser divertido, criativo e cheio de personalidade, e por isso, nossas coleções são coloridas, modernas e feitas para acompanhar o ritmo da infância.</p>
+  </div>
+</section>
+
+
 
 
 <div id="footer-container"></div>

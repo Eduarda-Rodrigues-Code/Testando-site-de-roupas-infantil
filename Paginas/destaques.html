@@ -95,130 +95,70 @@
 color:#EDB5B5; 
 }
 
-.queridinhos {
-  margin: 100px;
-  padding: 40px 20px;
-  text-align: left;
+
+
+.galeria-roupas {
+  padding: 60px 20px;
+  text-align: center;
 }
 
-.queridinhos h2 {
+.galeria-roupas h1 {
+  font-size: 32px;
+  margin-bottom: 40px;
   font-family: 'DM Serif Display', serif;
-  font-size: 24px;
-  margin-bottom: 30px;
-  color: #111;
+  color: #8AC0BF;
 }
 
-.carousel-wrapper {
+.galeria-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.item {
   position: relative;
-  max-width: 100%;
+  border-radius: 12px;
   overflow: hidden;
 }
 
-.carousel {
-  display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  gap: 20px;
-  padding: 10px;
+.item img {
+  width: 400px;
+  height: 600PX;
+  display: block;
+  border-radius: 12px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-.carousel::-webkit-scrollbar {
-  display: none;
+.item:hover img {
+  transform: scale(1.03);
 }
 
-.produto {
-  /* background-color: white; */
-  padding: 20px;
-  /* border-radius: 16px; */
-  width: 250px;
-  flex-shrink: 0;
-  position: relative;
-  /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.05); */
-}
-
-.produto img {
-  width: 100%;
-  border-radius: 8px;
-  margin-bottom: 8px;
-}
-
-.selo {
+.item button {
   position: absolute;
-  top: 8px;
-  left: 12px;
-  font-weight: bold;
-  background: none;
-  color: black;
-}
-
-.cores {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 10px 0;
-}
-
-.cores span {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  display: inline-block;
-  border: 1px solid #ccc;
-}
-
-h3 {
-  font-family: 'DM Serif Display', serif;
-  margin: 8px 0 4px;
-}
-
-.botoes {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 12px;
-}
-
-.comprar {
-  background-color: #72D94C;
-  border: none;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #8AC0BF;
   color: white;
-  padding: 6px 18px;
-  border-radius: 20px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.carrinho {
-  background-color: #f6c9cc;
   border: none;
-  color: #ffffff;
-  padding: 6px 18px;
-  border-radius: 20px;
+  border-radius: 25px;
+  padding: 8px 20px;
   font-weight: bold;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
-.btn-esq,
-.btn-dir {
-  position: absolute;
-  top: 40%;
-  transform: translateY(-50%);
-  background-color: #f6c9cc;
-  border: none;
-  padding: 12px 18px;
-  font-size: 24px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 2;
-  font-weight: bold;
+.item button:hover {
+  background-color: #5cc13b;
 }
 
-.btn-esq {
-  left: 0;
-}
-
-.btn-dir {
-  right: 0;
+@media (max-width: 768px) {
+  .item {
+    width: 100%;
+    max-width: 320px;
+  }
 }
 
 
@@ -226,7 +166,7 @@ h3 {
 </head>
 <body>
       <div id="Header-container"></div>
-      <br><br><br>
+      <br>
     <section class="verao">
   <div class="verao-titulo">
     <div class="bolinhas">
@@ -251,13 +191,51 @@ h3 {
   </div>
 </section>
 
-<section class="queridinhos">
- <h1>Coleções Passadas</h1>
+<section class="galeria-roupas">
+  <h1>Coleção 2025 - ESTAÇÕES DO ANO</h1>
 
-
+  <div class="galeria-container">
+    <div class="item">
+      <img src="img/INVERNO.png" alt="Imagem 1">
+      <button>INVERNO</button>
+    </div>
+    <div class="item">
+      <img src="img/meninas-brincando-na-praia-tiro-completo.jpg" alt="Imagem 2">
+      <button>VERÃO</button>
+    </div>
+    <div class="item">
+      <img src="img/pessoas-recolhendo-comida-da-floresta.jpg" alt="Imagem 3">
+      <button>OUTONO</button>
+    </div>
+    <div class="item">
+      <img src="img/criancas-se-divertindo-no-acampamento-de-verao.jpg" alt="Imagem 4">
+      <button>PRIMAVERA</button>
+    </div>
+  </div>
 </section>
 
+<section class="galeria-roupas">
+  <h1>Coleção 2024 - SONHOS DE INFÂNCIA</h1>
 
+  <div class="galeria-container">
+    <div class="item">
+      <img src="img/DESTAQUES/HEROI.png" alt="Imagem 1">
+      <button>HEROIS</button>
+    </div>
+    <div class="item">
+      <img src="img/DESTAQUES/PRINCESA.png" alt="Imagem 2">
+      <button>PRINCESAS</button>
+    </div>
+    <div class="item">
+      <img src="img/DESTAQUES/BRUXA.png" alt="Imagem 3">
+      <button>BRUXAS</button>
+    </div>
+    <div class="item">
+      <img src="img/DESTAQUES/ASTRONAUTA.png" alt="Imagem 4">
+      <button>LUNATICOS</button>
+    </div>
+  </div>
+</section>
 <div id="footer-container"></div>
 
 
