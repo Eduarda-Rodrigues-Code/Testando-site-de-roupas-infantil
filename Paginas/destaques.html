@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Destaques</title>
     <link rel="stylesheet" href="destaque.css">
+        <link rel="icon" href="img/LOGO.png" type="image/png">
+
     <style>
       *{
   padding: 0%;
   margin: 0%;
 }
   body{
-    background-color: #FFF4E8;
-}
+  background-image: url('img/fundo2.png');  
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;}
 
 .verao {
   padding: 40px 20px;
@@ -66,7 +71,7 @@
 
 .verao-card {
   position: relative;
-  width: 900px;
+  width: 600px;
   height: 900px;
   overflow: hidden;
   text-decoration: none;
@@ -78,6 +83,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 20PX;
 }
 
 .verao-label {
@@ -126,9 +132,10 @@ color:#EDB5B5;
   width: 400px;
   height: 600PX;
   display: block;
-  border-radius: 12px;
+  border-radius: 30px;
   object-fit: cover;
   transition: transform 0.3s ease;
+
 }
 
 .item:hover img {
@@ -180,12 +187,12 @@ color:#EDB5B5;
 
   <div class="verao-galeria">
     <a href="..." class="verao-card">
-      <img src="img/MENINAS VERAO.jpg" alt="Meninas">
+      <img src="img/DESTAQUES/MENINAS VERAO.jpg" alt="Meninas">
       <div class="verao-label">MENINAS</div>
     </a>
 
     <a href="..." class="verao-card">
-      <img src="img/MENINOS VERAO.jpg" alt="Meninos">
+      <img src="img/DESTAQUES/MENINOS VERAO.jpg" alt="Meninos">
       <div class="verao-label">MENINOS</div>
     </a>
   </div>
@@ -196,19 +203,19 @@ color:#EDB5B5;
 
   <div class="galeria-container">
     <div class="item">
-      <img src="img/INVERNO.png" alt="Imagem 1">
+      <img src="img/DESTAQUES/INVERNO.png" alt="Imagem 1">
       <button>INVERNO</button>
     </div>
     <div class="item">
-      <img src="img/meninas-brincando-na-praia-tiro-completo.jpg" alt="Imagem 2">
+      <img src="img/DESTAQUES/praia.jpg" alt="Imagem 2">
       <button>VERÃO</button>
     </div>
     <div class="item">
-      <img src="img/pessoas-recolhendo-comida-da-floresta.jpg" alt="Imagem 3">
+      <img src="img/DESTAQUES/outono.jpg" alt="Imagem 3">
       <button>OUTONO</button>
     </div>
     <div class="item">
-      <img src="img/criancas-se-divertindo-no-acampamento-de-verao.jpg" alt="Imagem 4">
+      <img src="img/DESTAQUES/primavera.jpg" alt="Imagem 4">
       <button>PRIMAVERA</button>
     </div>
   </div>
@@ -253,19 +260,6 @@ color:#EDB5B5;
       document.getElementById('footer-container').innerHTML = data;
     })
     .catch(error => console.error('Erro ao carregar o footer:', error));
-
-
-  function scrollCarousel(button, direction) {
-    const wrapper = button.closest('.carousel-wrapper');
-    const carousel = wrapper.querySelector('[data-carousel]');
-    const scrollAmount = 270;
-
-    carousel.scrollBy({
-      left: direction * scrollAmount,
-      behavior: 'smooth'
-    });
-  }
-
 
 </script>
 </body>

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+      <link rel="icon" href="img/LOGO.png" type="image/png">
+
 <head>
     <style>
         * {
@@ -9,8 +11,11 @@
 }
 
 body {
-  background-color:  #FFF4E8;
-  
+  background-image: url('img/fundo2.png');  
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 carrossel-container {
@@ -27,7 +32,7 @@ carrossel-container {
       overflow: hidden;
       border-radius: 10px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      margin: 0 auto; /* CENTRALIZA */
+      margin: 0 auto;
     }
 
     .slides {
@@ -125,7 +130,6 @@ carrossel-container {
   justify-content: center;
   gap: 32px;
   padding: 40px 20px;
-  background-color: #FFF4E8;
   flex-wrap: wrap;
 }
 
@@ -302,8 +306,8 @@ carrossel-container {
 <br><br><br>
 <div class="carrossel">
     <div class="slides" id="slides">
-      <div class="slide"><img src="img/1.png" alt="Imagem 1"></div>
-      <div class="slide"><img src="img/2.png" alt="Imagem 2"></div>
+      <div class="slide"><img src="img/INDEX/carrossel2.png" alt="Imagem 1"></div>
+      <div class="slide"><img src="img/INDEX/carrossel.png" alt="Imagem 2"></div>
       <!-- <div class="slide"><img src="https://picsum.photos/id/1018/800/400" alt="Imagem 3"></div> -->
     </div>
     <button class="nav-button prev" onclick="voltarSlide()">&#10094;</button>
@@ -316,19 +320,19 @@ carrossel-container {
 
   <div class="galeria-container">
     <div class="item">
-      <img src="img/INVERNO.png" alt="Imagem 1">
+      <img src="img/DESTAQUES/INVERNO.png" alt="Imagem 1">
       <button>INVERNO</button>
     </div>
     <div class="item">
-      <img src="img/meninas-brincando-na-praia-tiro-completo.jpg" alt="Imagem 2">
+      <img src="img/DESTAQUES/praia.jpg" alt="Imagem 2">
       <button>VERÃO</button>
     </div>
     <div class="item">
-      <img src="img/pessoas-recolhendo-comida-da-floresta.jpg" alt="Imagem 3">
+      <img src="img/DESTAQUES/outono.jpg" alt="Imagem 3">
       <button>OUTONO</button>
     </div>
     <div class="item">
-      <img src="img/criancas-se-divertindo-no-acampamento-de-verao.jpg" alt="Imagem 4">
+      <img src="img/DESTAQUES/primavera.jpg" alt="Imagem 4">
       <button>PRIMAVERA</button>
     </div>
   </div>
@@ -347,7 +351,7 @@ carrossel-container {
 </section>
 
 <section class="sobre">
-    <img src="img/Mancha.png" alt="Criança sorrindo com blusa amarela">
+    <img src="img/INDEX/Mancha.png" alt="Criança sorrindo com blusa amarela">
 
   <div class="sobre-texto">
     <h2>Aqui no Pequeno Mundo...</h2>
@@ -397,7 +401,7 @@ carrossel-container {
 
     setInterval(() => {
       avancarSlide();
-    }, 4000); // Muda a cada 4 segundos
+    }, 6000); 
 </script>
 
 </body>
