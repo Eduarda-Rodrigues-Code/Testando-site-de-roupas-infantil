@@ -1,420 +1,181 @@
 <!DOCTYPE html>
-<html lang="pt-BR" >
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfólio - Eduarda Rodrigues</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amelia Morgan - Frontend Designer</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
-    :root {
-      --cor-rosa: #b88ca7;
-      --cor-rosa-escuro: #94677f;
-      --cinza-claro: #f9f6f7;
-      --cinza-medio: #999;
-      --cinza-escuro: #333;
-      --branco: #fff;
-      --sombra-suave: rgba(168, 116, 139, 0.15);
-    }
     * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--cinza-claro);
-      color: var(--cinza-escuro);
-      line-height: 1.5;
-      min-height: 100vh;
-    }
-    header {
-      position: sticky;
-      top: 0;
-      background: var(--branco);
-      padding: 1rem 2rem;
-      box-shadow: 0 2px 6px var(--sombra-suave);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 100;
-    }
-    header h1 {
-      font-weight: 600;
-      color: var(--cor-rosa-escuro);
-      font-size: 1.8rem;
-    }
-    nav a {
-      color: var(--cinza-medio);
-      margin-left: 1.6rem;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.3s;
-      cursor: pointer;
-    }
-    nav a:hover {
-      color: var(--cor-rosa);
-    }
-    main {
-      max-width: 900px;
-      margin: 3rem auto 4rem;
-      padding: 0 1rem;
-    }
-    /* SEÇÃO INÍCIO - perfil e jornada */
-    #inicio {
-      display: flex;
-      gap: 3rem;
-      background: var(--branco);
-      padding: 2.4rem 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 15px var(--sombra-suave);
-    }
-    #perfil {
-      flex: 1;
-      max-width: 280px;
-      text-align: center;
-    }
-    #perfil img {
-      width: 100%;
-      border-radius: 50%;
-      border: 3.5px solid var(--cor-rosa);
-      object-fit: cover;
-      aspect-ratio: 1/1;
-      margin-bottom: 1.2rem;
-    }
-    #contatos {
-      margin-top: 1.6rem;
-    }
-    #contatos a {
-      display: block;
-      color: var(--cor-rosa-escuro);
-      font-weight: 600;
-      margin-bottom: 0.6rem;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
-    #contatos a:hover {
-      color: var(--cor-rosa);
-      text-decoration: underline;
-    }
-    #jornada {
-      flex: 2;
-    }
-    #jornada h2 {
-      color: var(--cor-rosa);
-      margin-bottom: 1.6rem;
-      font-size: 1.9rem;
-      font-weight: 600;
-      border-bottom: 2.5px solid var(--cor-rosa);
-      padding-bottom: 0.3rem;
-      width: fit-content;
-    }
-    .timeline {
-      border-left: 3px solid var(--cor-rosa);
-      padding-left: 1.5rem;
-    }
-    .timeline-item {
-      margin-bottom: 1.8rem;
-      position: relative;
-    }
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -12px;
-      top: 6px;
-      width: 12px;
-      height: 12px;
-      background: var(--cor-rosa);
-      border-radius: 50%;
-      box-shadow: 0 0 8px var(--sombra-suave);
-    }
-    .timeline-item h4 {
-      margin-bottom: 0.4rem;
-      color: var(--cor-rosa-escuro);
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-    .timeline-item p {
-      font-size: 0.95rem;
-      color: var(--cinza-medio);
-      line-height: 1.3;
-    }
-    /* GALERIA DE PROJETOS */
-    #projetos {
-      margin-top: 4rem;
-    }
-    #projetos h2 {
-      color: var(--cor-rosa);
-      font-size: 1.9rem;
-      font-weight: 600;
-      margin-bottom: 2rem;
-      border-bottom: 2.5px solid var(--cor-rosa);
-      width: fit-content;
-      padding-bottom: 0.3rem;
-    }
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 2rem;
-    }
-    .card {
-      background: var(--branco);
-      border-radius: 14px;
-      padding: 1.4rem 1.6rem;
-      box-shadow: 0 0 15px var(--sombra-suave);
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
-    .card:hover {
-      box-shadow: 0 4px 30px rgba(184,140,167,0.45);
-      transform: translateY(-6px);
-    }
-    .card h3 {
-      color: var(--cor-rosa-escuro);
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-    }
-    .card p {
-      flex-grow: 1;
-      color: var(--cinza-medio);
-      font-size: 0.95rem;
-      line-height: 1.25;
-    }
-    /* MODAL DETALHES */
-    #modalDetalhes {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.5);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem;
-      z-index: 150;
-    }
-    #modalDetalhes.active {
-      display: flex;
-    }
-    #modalConteudo {
-      background: var(--branco);
-      max-width: 850px;
-      width: 100%;
-      border-radius: 16px;
-      padding: 2rem 3rem;
-      box-shadow: 0 0 20px var(--sombra-suave);
-      display: flex;
-      gap: 3rem;
-      flex-wrap: wrap;
-      position: relative;
-    }
-    #modalConteudo > div {
-      flex: 1 1 300px;
-      min-width: 280px;
-    }
-    #modalConteudo h2 {
-      color: var(--cor-rosa);
-      margin-bottom: 1.2rem;
-      font-weight: 700;
-      font-size: 1.8rem;
-      border-bottom: 2.5px solid var(--cor-rosa);
-      padding-bottom: 0.3rem;
-      width: fit-content;
-    }
-    #modalConteudo p {
-      color: var(--cinza-escuro);
-      font-size: 1rem;
-      line-height: 1.4;
-      margin-bottom: 1.6rem;
-    }
-    #modalConteudo strong {
-      color: var(--cor-rosa-escuro);
-    }
-    #modalConteudo a.btn {
-      display: inline-block;
-      background: var(--cor-rosa);
-      color: var(--branco);
-      padding: 0.6rem 1.4rem;
-      border-radius: 28px;
-      text-decoration: none;
-      font-weight: 600;
-      margin-right: 1rem;
-      transition: background-color 0.3s ease;
-      font-size: 0.95rem;
-    }
-    #modalConteudo a.btn:hover {
-      background: var(--cor-rosa-escuro);
-    }
-    #fecharModal {
-      position: absolute;
-      top: 1rem;
-      right: 1.5rem;
-      background: transparent;
-      border: none;
-      font-size: 2.2rem;
-      color: var(--cor-rosa-escuro);
-      cursor: pointer;
-      font-weight: 700;
-      line-height: 1;
-      transition: color 0.3s ease;
-    }
-    #fecharModal:hover {
-      color: var(--cor-rosa);
-    }
-    /* RESPONSIVIDADE */
-    @media (max-width: 768px) {
-      #inicio {
-        flex-direction: column;
-      }
-      #perfil {
-        max-width: 100%;
-      }
-      #modalConteudo {
-        flex-direction: column;
-        padding: 1.5rem 1.5rem 2rem;
-      }
-      #modalConteudo > div {
-        min-width: auto;
-      }
-    }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0b0b0c;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #00fff7;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+nav a {
+  color: #ccc;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+  color: #00fff7;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 60px;
+  min-height: 80vh;
+}
+
+.content {
+  max-width: 600px;
+}
+
+.content h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.content h1 span,
+.content h2 span {
+  color: #00fff7;
+}
+
+.content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.content p {
+  font-size: 1rem;
+  color: #aaa;
+  margin-bottom: 30px;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid #00fff7;
+  transition: background 0.3s, color 0.3s;
+}
+
+.btn.hire {
+  background-color: #00fff7;
+  color: #000;
+}
+
+.btn.contact {
+  background-color: transparent;
+  color: #00fff7;
+}
+
+.btn:hover {
+  background-color: #00fff7;
+  color: #000;
+}
+
+.socials {
+  margin-top: 10px;
+}
+
+.socials a {
+  color: #00fff7;
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+
+.profile-pic {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 40px #00fff7;
+}
+
+.profile-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8);
+}
+
   </style>
 </head>
 <body>
+  <header>
+    <div class="logo">Amelia <span>Morgan</span></div>
+    <nav>
+      <ul>
+        <li><a class="active" href="#">Home</a></li>
+        <li><a href="#">Education</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Testimonials</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<header>
-  <h1>Eduarda Rodrigues</h1>
-  <nav>
-    <a href="#inicio">Início</a>
-    <a href="#projetos">Projetos</a>
-  </nav>
-</header>
-
-<main>
-
-  <section id="inicio" tabindex="-1">
-    <div id="perfil">
-      <img src="https://i.pravatar.cc/300?img=47" alt="Foto da Eduarda" />
-      <div id="contatos">
-        <a href="mailto:eduarda@email.com">📧 eduarda@email.com</a>
-        <a href="https://linkedin.com/in/eduarda-rodrigues-oliveira-84531219a" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://github.com/Dudinha-nnja" target="_blank" rel="noopener noreferrer">GitHub</a>
+  <main class="hero">
+    <div class="content">
+      <h1>Hi, It's <span>Amelia</span></h1>
+      <h2>I'm a <span>Frontend Designer</span></h2>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam, laborum.</p>
+      <div class="buttons">
+        <a href="#" class="btn hire">Hire</a>
+        <a href="#" class="btn contact">Contact</a>
+      </div>
+      <div class="socials">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
       </div>
     </div>
-    <div id="jornada">
-      <h2>Minha Jornada</h2>
-      <div class="timeline">
-        <article class="timeline-item" tabindex="0" aria-label="2022 - Técnico em Informática">
-          <h4>2022 - Técnico em Informática</h4>
-          <p>Conclusão do curso técnico e início da carreira como suporte técnico.</p>
-        </article>
-        <article class="timeline-item" tabindex="0" aria-label="2023 - Curso Front-End no SENAI">
-          <h4>2023 - Curso Front-End no SENAI</h4>
-          <p>Aprendizado de HTML, CSS, JavaScript e React.</p>
-        </article>
-        <article class="timeline-item" tabindex="0" aria-label="2024 - Jovem Aprendiz em TI">
-          <h4>2024 - Jovem Aprendiz em TI</h4>
-          <p>Experiência prática em suporte e automação de processos.</p>
-        </article>
-        <article class="timeline-item" tabindex="0" aria-label="2025 - Cursando ADS">
-          <h4>2025 - Cursando ADS</h4>
-          <p>Aprofundamento em desenvolvimento de sistemas e banco de dados.</p>
-        </article>
-      </div>
+    <div class="profile-pic">
+      <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e" alt="Amelia">
     </div>
-  </section>
-
-  <section id="projetos" tabindex="-1">
-    <h2>Projetos</h2>
-    <div class="galeria" role="list">
-      <article class="card" role="listitem" tabindex="0" data-projeto="todo" aria-describedby="desc-todo">
-        <h3>To-Do List</h3>
-        <p id="desc-todo">App simples e funcional para tarefas.</p>
-      </article>
-      <article class="card" role="listitem" tabindex="0" data-projeto="quiz" aria-describedby="desc-quiz">
-        <h3>Quiz Interativo</h3>
-        <p id="desc-quiz">Quiz romântico com interações divertidas.</p>
-      </article>
-      <!-- Adicione mais cards aqui conforme precisar -->
-    </div>
-  </section>
-
-</main>
-
-<!-- Modal de detalhes -->
-<div id="modalDetalhes" role="dialog" aria-modal="true" aria-labelledby="modalTitulo" aria-describedby="modalDescricao">
-  <div id="modalConteudo">
-    <button id="fecharModal" aria-label="Fechar detalhes do projeto">&times;</button>
-    <div>
-      <h2 id="modalTitulo">Título do Projeto</h2>
-      <p id="modalDescricao">Descrição do projeto...</p>
-      <p><strong>Tecnologias usadas:</strong> <span id="modalTecnologias"></span></p>
-    </div>
-    <div>
-      <a id="modalLinkSite" href="#" target="_blank" rel="noopener noreferrer" class="btn">Ver Site</a>
-      <a id="modalLinkRepo" href="#" target="_blank" rel="noopener noreferrer" class="btn">Ver Código</a>
-    </div>
-  </div>
-</div>
-
-<script>
-  const projetos = {
-    todo: {
-      titulo: "To-Do List",
-      descricao: "Um aplicativo simples e funcional para organização de tarefas diárias, com foco em usabilidade e responsividade.",
-      tecnologias: "HTML, CSS, JavaScript",
-      linkSite: "https://exemplo.com/todo",
-      linkRepo: "https://github.com/Dudinha-nnja/todo"
-    },
-    quiz: {
-      titulo: "Quiz Interativo",
-      descricao: "Quiz romântico com perguntas personalizadas, animações suaves e interações divertidas para engajar os usuários.",
-      tecnologias: "React, CSS Modules, APIs",
-      linkSite: "https://exemplo.com/quiz",
-      linkRepo: "https://github.com/Dudinha-nnja/quiz"
-    }
-  };
-
-  const modal = document.getElementById('modalDetalhes');
-  const modalTitulo = document.getElementById('modalTitulo');
-  const modalDescricao = document.getElementById('modalDescricao');
-  const modalTecnologias = document.getElementById('modalTecnologias');
-  const modalLinkSite = document.getElementById('modalLinkSite');
-  const modalLinkRepo = document.getElementById('modalLinkRepo');
-  const fecharModalBtn = document.getElementById('fecharModal');
-
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('click', () => {
-      const id = card.getAttribute('data-projeto');
-      const proj = projetos[id];
-      if (proj) {
-        modalTitulo.textContent = proj.titulo;
-        modalDescricao.textContent = proj.descricao;
-        modalTecnologias.textContent = proj.tecnologias;
-        modalLinkSite.href = proj.linkSite;
-        modalLinkRepo.href = proj.linkRepo;
-        modal.classList.add('active');
-        modal.focus();
-      }
-    });
-  });
-
-  fecharModalBtn.addEventListener('click', () => {
-    modal.classList.remove('active');
-  });
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.classList.remove('active');
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === "Escape" && modal.classList.contains('active')) {
-      modal.classList.remove('active');
-    }
-  });
-</script>
-
+  </main>
 </body>
 </html>
