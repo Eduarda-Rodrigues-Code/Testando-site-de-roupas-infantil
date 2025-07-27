@@ -179,14 +179,50 @@
       font-size: 20px;
       cursor: pointer;
     }
-    input[type="text"], input[type="number"], select, textarea {
-      width: 100%;
-      padding: 6px;
-      margin: 6px 0 12px 0;
-      box-sizing: border-box;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
+input[type="file"] {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #fff0f6;
+  border: 2px dashed #ff69b4;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+input[type="file"]:hover {
+  background-color: #ffe0ec;
+  border-color: #ff1493;
+}
+
+input[type="file"]:focus {
+  outline: none;
+  border-color: #ff1493;
+  box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.3);
+}
+.input-imagem {
+  display: none;
+}
+
+.botao-upload {
+  display: inline-block;
+  background-color: #ff69b4;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-top: 6px;
+}
+
+.botao-upload:hover {
+  background-color: #ff1493;
+}
+
     label {
       font-weight: bold;
     }
@@ -219,7 +255,6 @@
       <option value="bebe">Bebê</option>
     </select>
 
-   <!-- Paleta de cores - Adicionar -->
 <label>Cores:</label>
 <div id="paletaCores" class="paleta-cores"></div>
 <input type="hidden" id="cores" required />
@@ -248,12 +283,10 @@
       </tr>
     </thead>
     <tbody id="tbodyProdutos">
-      <!-- Produtos vão aqui -->
     </tbody>
   </table>
 </section>
 
-<!-- Modal editar produto -->
 <div class="modal-bg" id="modalEditar">
   <div class="modal">
     <button class="fechar" onclick="fecharModalEditar()">✖</button>
