@@ -385,10 +385,8 @@ input[type="file"]:focus {
     carregarTabela();
   };
 
-  // Produtos salvos no localStorage
   let produtos = JSON.parse(localStorage.getItem('produtos')) || [];
 
-  // Form adicionar produto
   const formProduto = document.getElementById('formProduto');
   const inputImagem = document.getElementById('imagem');
 

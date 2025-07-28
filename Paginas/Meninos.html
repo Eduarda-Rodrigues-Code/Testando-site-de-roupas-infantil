@@ -298,32 +298,27 @@
   <div class="container">
     <main id="produtos" class="produtos"></main>
   </div>
-
+ 
+<script src="produtos/MASCULINO.js"></script>
 <div id="footer-container"></div>
 
 <script>
+  // Carregar cabeçalho, rodapé e estações
   fetch('Header.html')
     .then(res => res.text())
     .then(html => document.getElementById('header-container').innerHTML = html);
 
-    
-        fetch('footer.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('footer-container').innerHTML = data;
-    })
-    .catch(error => console.error('Erro ao carregar o footer:', error));
-
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(html => document.getElementById('footer-container').innerHTML = html)
+    .catch(err => console.error('Erro ao carregar o footer:', err));
 
   fetch('ESTAÇÕES.html')
     .then(res => res.text())
     .then(html => document.getElementById('ESTAÇÕES-container').innerHTML = html);
 
-   const produtos = JSON.parse(localStorage.getItem("produtos")) || [];
-
   // Filtra só os produtos da categoria menino
   const produtosMenino = produtos.filter(p => p.categoria === "menino");
-
   const container = document.getElementById("produtos");
 
   produtosMenino.forEach(produto => {
@@ -349,21 +344,23 @@
     container.appendChild(card);
   });
 
+  // Modal
   let imagensProduto = [];
   let imagemAtual = 0;
 
   function abrirModal(produto) {
-    imagensProduto = [produto.imagem]; // seu admin salva uma imagem só, né?
+    imagensProduto = [produto.imagem];
     imagemAtual = 0;
+
     document.getElementById("modalImagem").src = imagensProduto[imagemAtual];
     document.getElementById("modalNome").textContent = produto.nome;
     document.getElementById("modalPreco").textContent = produto.preco;
     document.getElementById("modalDescricao").textContent = produto.descricao;
 
-    // Tamanhos (se tiver tamanhos, ou deixa vazio)
+    // Tamanhos
     const tamanhosContainer = document.getElementById("modalTamanhos");
     tamanhosContainer.innerHTML = "";
-    if(produto.tamanhos && produto.tamanhos.length){
+    if (produto.tamanhos?.length) {
       produto.tamanhos.forEach(tamanho => {
         const btn = document.createElement("button");
         btn.textContent = tamanho;
@@ -397,6 +394,7 @@
     document.getElementById("modalBg").style.display = "none";
   }
 
+  // Ação do botão comprar no modal
   document.querySelector(".comprar-modal").addEventListener("click", () => {
     const nome = document.getElementById("modalNome").textContent;
     const preco = document.getElementById("modalPreco").textContent;
@@ -427,7 +425,10 @@
     alert(`${nome} adicionado ao carrinho!`);
     fecharModal();
   });
+
+  
 </script>
+
 
 </body>
 </html>
