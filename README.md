@@ -24,7 +24,7 @@
 ##  Protótipo
 
 O design do site foi baseado neste protótipo em alta fidelidade no Figma:  
-🔗 [Link para o protótipo no Figma]([https://www.figma.com/](https://www.figma.com/proto/LCirJrJL2kARc6G2mxBMZn/Style-Guide?node-id=9-227&p=f&t=0txeI3PzXtmmHMYk-0&scaling=scale-down&content-scaling=fixed&page-id=9%3A226)) 
+🔗 [([https://www.figma.com/](https://www.figma.com/proto/LCirJrJL2kARc6G2mxBMZn/Style-Guide?node-id=9-227&p=f&t=0txeI3PzXtmmHMYk-0&scaling=scale-down&content-scaling=fixed&page-id=9%3A226)) ]
 
 ## Funcionalidades já implementadas
 
