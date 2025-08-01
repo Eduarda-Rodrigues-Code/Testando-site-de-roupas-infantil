@@ -4,88 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Carrinho de Compras</title>
-      <link rel="icon" href="img/LOGO.png" type="image/png">
-
-  <style>
-     body{
-         margin: 0;
-      padding: 0;
-     }
-     .container{
-        margin: right 50px ;
-        margin-left: 50px;
-     }
-     h1{
-        margin: 50px;
-        color: #e78bb6;
-        text-align: center;
-     }
-    .produto {
-      border-bottom: 1px solid #ccc;
-      padding: 10px 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .produto img {
-        margin-left: 100px;
-      width: 200px;
-      height: 300px;
-      object-fit: contain;
-      border-radius: 6px;
-    }
-    .info {
-      flex: 1;
-    }
-    .info p {
-      font-size: 20px;
-      margin: 20px 0;
-    }
-    .btn-remover {
-        margin-right: 100px;
-      background-color: #ff4c4c;
-      border: none;
-      color: white;
-      padding: 10px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-     #total {
-      font-weight: bold;
-      margin-top: 20px;
-      font-size: 1.2em;
-    }
-    .fim #cupomContainer {
-      margin-top: 20px;
-    }
-    .fim #cupomInput {
-      padding: 6px;
-      width: 200px;
-      font-size: 1em;
-    }
-    .fim #aplicarCupomBtn {
-      padding: 6px 12px;
-      margin-left: 10px;
-      cursor: pointer;
-      background-color: #65be11;
-      border: none;
-      color: white;
-      font-weight: bold;
-      border-radius: 6px;
-    }
-    .fim #pagarBtn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-weight: bold;
-      font-size: 1.1em;
-      cursor: pointer;
-      background-color: #f072a7;
-      color: white;
-      border: none;
-      border-radius: 10px;
-    }
-  </style>
+  <link rel="icon" href="../img/LOGO.png" type="image/png">
+  <link rel="stylesheet" href="style/Comprar.css">
 </head>
 <body>
       <div id="header-container"></div>
@@ -110,17 +30,20 @@
 <div id="footer-container"></div>
 
   <script>
-     fetch('Header.html')
-    .then(res => res.text())
-    .then(html => document.getElementById('header-container').innerHTML = html);
+       fetch('../Componentes/Header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('header-container').innerHTML = data;
+    })
 
     
-        fetch('footer.html')
+        fetch('../Componentes/footer.html')
     .then(response => response.text())
     .then(data => {
       document.getElementById('footer-container').innerHTML = data;
     })
     .catch(error => console.error('Erro ao carregar o footer:', error));
+
 
 
     const produtosContainer = document.getElementById('produtosContainer');
